@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="/css/mainBoxStyle.css" rel="stylesheet" type="text/css"/>
+<link href="/css/document.css" rel="stylesheet" type="text/css"/>
+<link href="/css/homePageCSS.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+
+<body>
+  <div class="stackRow">
+    <div id="toolbar">
+			<a class="Bigbtn" href="/ckEditorPage">Create Document</a>
+    </div>
+  </div>
+	<div class="stackRow">
+		<div class="tableBean">
+			 <table width="200" border="1" class="docList">
+			  <tbody>
+				<tr>
+				  <th style="width:50px">IDX</td>
+				  <th style="width:90px">IMG</td>
+				  <th>DOCUMENT NAME</td>
+				  <th style="width:130px" >DATE</td>
+				  <th style="width:80px">EDIT</td>
+				  <th style="width:80px">DELETE</td>
+				</tr>
+        <% docdata.forEach( (doc, i)=>{%>
+				<tr id="<%=doc.id_doc%>">
+				  <td><%=doc.id_doc%></td>
+				  <td><a onmouseover="this.style.cursor = 'pointer'" style=" text-decoration: underline">img</a></td>
+				  <td style="text-align: left;"> <a onmouseover="this.style.cursor = 'pointer'" style=" text-decoration: underline"><%=doc.doc_name%></a></td>
+				  <td ><%=formatDate(doc.creatdate)%></td>
+				  <td id='editID_<%=doc.id_doc%>' onClick="edit_click(this.id)"> <a onmouseover="this.style.cursor = 'pointer'" style=" text-decoration: underline">edit</a></td>
+				  <td id='delID_<%=doc.id_doc%>' onClick="delete_click(this.id)"><a onmouseover="this.style.cursor = 'pointer'" style=" text-decoration: underline">delete</a></td>
+				</tr>
+        <%}); %>
+			  </tbody>
+			</table>
+      <% function formatDate(date) {
+        var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear(),
+        hour = '' + d.getHours(),
+        minut = '' + d.getMinutes();
+
+
+        if (month.length < 2)
+        month = '0' + month;
+        if (day.length < 2)
+        day = '0' + day;
+        if (hour.length < 2)
+        hour = '0' + hour;
+        if (minut.length < 2)
+        minut = '0' + minut;
+
+        return [hour, minut].join(':') + " "+ [ month, day, year].join('-');
+      }%>
+		</div>
+	</div>
+</body>
+<script>
+function Post(){
+  document.getElementById('createDB').onclick = null;
+  window.location.href = '/initDatabase'
+}
+
+window.onload = (event) => {
+  console.log('page is fully loaded');
+};
+
+function edit_click(clicked_id)
+{
+  var dataID_ =  clicked_id.split("_")[1];
+  var dataID = document.getElementById(clicked_id).parentElement.id;
+  console.log("'/editDoc?id='+dataID",'/editDoc?id='+dataID);
+  window.location.href = '/editDoc?id='+dataID;
+
+}
+
+function delete_click(clicked_id)
+{
+  var dataID_ = clicked_id.split("_")[1];
+  var dataID = document.getElementById(clicked_id).parentElement.id;
+  window.location.href = '/deleteDoc?id='+dataID;
+}
+</script>
+</html>

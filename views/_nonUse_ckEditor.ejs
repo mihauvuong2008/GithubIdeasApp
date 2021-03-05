@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="css/homePageCSS.css" rel="stylesheet" type="text/css">
+<script src="/javascript/ckeditor5-build-classic/ckeditor.js"></script>
+<script src="/javascript/myCkeditorUploadAdapter.js"></script>
+
+<!--
+* <script src="D:/learning/Nodejs/GithubIdeasApp/node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+-->
+
+</head>
+
+<body>
+    <div class="MainDiv">
+      <div id="editor">Begin post</div>
+      <div class="Nombtn" id="post">Post</div>
+    </div>
+
+</body>
+
+
+		<script>
+		var loc = window.location.pathname;
+		var dir = loc.substring(0, loc.lastIndexOf('/'));
+		console.log("dir: ", dir);
+
+		ClassicEditor
+			.create( document.querySelector( '#editor' ), {
+				extraPlugins: [ MyCustomUploadAdapterPlugin, Image ],
+
+				// ...
+		} )
+			.then( editor => {
+				console.log( editor );
+			}).catch( error => {
+				console.error( error );
+			});
+			ClassicEditor.maxHeight = 500;
+		</script>
+
+</html>

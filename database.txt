@@ -1,0 +1,21 @@
+use githubideanodejswebapp;
+
+show tables;
+
+CREATE TABLE IF NOT EXISTS customers (name VARCHAR(255), address VARCHAR(255));
+CREATE TABLE IF NOT EXISTS ckeditordata (
+	id_doc INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	doc_name VARCHAR(255) NOT NULL, 
+	content MEDIUMTEXT,
+	link VARCHAR (511),
+	creatdate DATETIME
+	);
+
+	
+	
+	
+INSERT INTO  ckeditordata ( doc_name, content , creatdate ) value ('name1', 'data1', '2021-03-02 08:08:49');
+
+	
+drop table customers;
+drop table ckeditordata;

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8"/>
+    <title>Home
+    </title>
+  <link href="css/firstDBapp.css" rel="stylesheet" type="text/css">
+</head>
+  <script src="javascript/IndexedDBApp.js"></script>
+
+<body>
+    <div id="messageDivBoxID">
+      <textarea  id="notifBoxID"> notibox here!
+      </textarea>
+      <textarea   id="logBoxID"> log box here!
+      </textarea>
+    </div>
+	<div id="toolBox">
+		<input class ="DBtool" type="button" onclick="loadDB()" id="loadDBID" value="Load DB"/>
+    	<input class ="DBtool" type="button" onclick="queryDB()" id="queryDBID" value="Query DB"/>
+		<input class ="DBtool" type="submit" onclick="addData()" value="add Data "/>
+    	<input class ="DBtool" type="button" onclick="clearDB()" id="clearDBID" value="Clear DB"/>
+    </div>
+
+	<table id="dataFiledID">
+      <tr>
+        <th><label for="userid">userid: </label></th>
+        <th><input id="userid" type="text" name="userid[userid]"/></th>
+      </tr>
+	  <tr>
+        <th><label for="name">name: </label></th>
+        <th><input id="name" type="text" name="user[name]"/></th>
+      </tr>
+		<tr>
+        <th><label for="email">email: </label></th>
+        <th><input id="email" type="text" name="user[email]"/></th>
+
+      </tr>
+    </table>
+
+    <table id="IndexedDBData_table_id">
+      <tr>
+        <th>STT</th>
+        <th>USER ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+      </tr>
+    </table>
+
+
+</body>
+  <script>
+    document.getElementById("clearDBID").disabled = true;
+  </script>
+</html>

@@ -1,0 +1,323 @@
+@charset "utf-8";
+:root{
+--sidenav-width: 220px;
+--mainapp-width: calc(100vw  - 280px);
+}
+
+.DBbutton {
+	width: auto;
+	margin: 4px 2px;
+	border-radius: 3px;
+	padding: 15px 32px;
+	background-color: #E1ECF4;
+	color: #5873b8;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 13px;
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid #7AA7C7;
+	outline: none;
+	font-family: inherit;
+	line-height: 1.15385;
+}
+
+
+#iLoadDB {
+	width: 51px;
+}
+.LoadDB {
+}
+div form {
+	display: inline-block;
+}
+.FormDB {
+}
+.notiPanel {
+	background-color: #F1F1F1;
+	min-height: 200px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+}
+
+#notiPanelID .NotHeader {
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-weight: 400;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-left: 0px;
+	font-size: 24px;
+	line-height: 1.5;
+	margin-bottom: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+#notiPanelID .textArea {
+	width: 100%;
+	background: #282c34;
+	min-height: 150px;
+}
+html, body {
+    margin: 0;
+    height: 100%;
+    min-width: 700px;
+}
+.bodyDiv {
+}
+
+.MainDiv {
+	width:100%;
+	padding-top: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	padding-left: 235px;
+  overflow: inherit;
+  box-sizing: border-box;
+}
+
+
+.sidenav {
+    padding-top: 145px;
+	width: var(--sidenav-width);
+  height: 100%;
+	background-color: #F1F1F1;
+  overflow: scroll;
+  top: 0;
+  left: 0;
+	box-shadow: 4px 0px 5px 0px #cccccc;
+  display: block!important;
+  position: fixed;
+  z-index: 1;
+}
+
+.sidenav a {
+	display: block;
+	font-size: 18px;
+	text-decoration: none;
+	padding-top: 6px;
+	padding-right: 16px;
+	padding-bottom: 6px;
+	padding-left: 8px;
+	color: #000000;
+	text-align: left;
+	margin-left: 5px;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+  background:#1E90FF;
+}
+
+.sticky {
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .bodyDiv {
+  padding-top: 40px;
+}
+
+.footer {
+   bottom: 0;
+   background-color: #1e90ff;
+ 	 padding-left: 230px;
+   color: white;
+   text-align: center;
+}
+
+.topmenu {
+	overflow: hidden;
+	background-color: #333;
+	width: 100%;
+	box-shadow: 0px 5px 5px 0px #cccccc;
+  z-index: 100;
+  position:relative;
+  min-width: 500px;
+}
+.topmenu a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-decoration: none;
+	text-align: center;
+	padding-left: 18px;
+	padding-top: 16px;
+	padding-right: 18px;
+	padding-bottom: 16px;
+	font-size: 18px;
+}
+.topmenu a:hover {
+	background:#ddd;
+	color: black;
+}
+.header {
+	overflow: hidden;
+	background: #f1f1f1;
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 5px;
+  position:relative;
+  z-index: 100;
+}
+
+
+.header a {
+	float: left;
+	padding-top: 12px;
+	padding-right: 12px;
+	padding-bottom: 6px;
+	padding-left: 6px;
+	font-family: Verdana,sans-serif;
+	font-size: 35px;
+	text-decoration: none;
+	text-align: center;
+	font-weight: bold;
+	color: #1E90FF;
+}
+
+.header .slogan {
+	float: right;
+	display: block;
+	padding-top: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	letter-spacing: 3px;
+	font-size: 16px;
+	margin-top: 18px;
+	margin-right: 6px;
+}
+.header .loginButton {
+	display: block;
+	float: right;
+	margin-top: 21px;
+	margin-right: 0px;
+}
+.header .loginButton input {
+	width: 85px;
+	border-radius: 4px;
+	height: 35px;
+	color: #ffffff;
+	border: none;
+	background-color: #1E90FF;
+	font-size: 18px;
+}
+
+.welcome   {
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	font-weight: bold;
+	font-size: 35px;
+	letter-spacing: 4px;
+	float: none;
+	margin-left: 50px;
+}
+.Bigbtn {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding-top: 10px;
+	padding-right: 25px;
+	padding-left: 25px;
+	padding-bottom: 10px;
+	text-decoration: none;
+	display: block;
+	font-size: 16px;
+	text-align: center;
+	float: right;
+	height: auto;
+	cursor: pointer;
+}
+
+.Bigbtn:hover{
+	background-color: #63BA66;
+	color: #494949;
+}
+.Nombtn {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding-top: 8px;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-bottom: 8px;
+	text-decoration: none;
+	display: block;
+	font-size: 15px;
+	text-align: center;
+	float: right;
+	height: auto;
+	cursor: pointer;
+}
+
+.Nombtn:hover{
+	background-color: #63BA66;
+	color: #494949;
+}
+.ck-editor__editable_inline
+{
+min-height: 300px;
+}
+
+
+/* The Modal (background)  src = w3schools.com */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modalRow {
+	overflow: hidden;
+	display: table;
+	width: 100%;
+}
+/* Modal Content */
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 15px;
+	border: 1px solid #888;
+	width: 55%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modalinput {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	width: 100%;
+	padding-right: 15px;
+}
+.textBox{
+  width: 100%;
+  padding: 5px;
+  box-sizing:  border-box;
+}

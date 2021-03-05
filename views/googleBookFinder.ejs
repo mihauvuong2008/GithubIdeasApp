@@ -1,0 +1,473 @@
+<!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <script src="javascript/googleBookAPIquerydata.js"></script>
+  <script >
+  </script>
+  <link href="/css/googleBookFinder.css" rel="stylesheet" type="text/css" />
+</head>
+<body >
+  <div class="toolbar">
+    <div class="tool">
+   	  <div class="homeButton">
+		  <img src="/icon/iconfinder_Home-01_1976053.png" width="24" height="24" alt=""/>
+	  </div>
+    </div>
+    <div class="tool">
+      <input type="text" id="termbookSearchID" />
+      <input id="searchBookID" type="button" onclick="searchBook()" value="search"/>
+    	<input type="button" value="clear"/>
+    </div>
+    <div class="tool">
+      <input type="button" value="zoom out"/>
+      <input type="button" value="zoom in"/>
+    </div>
+    <div class="tool">
+      <input type="button" value="prev" onclick="prevVolume()"/>
+      <input type="button" value="next" onclick="nextVolume()"/>
+    </div>
+	   <div class="tool">
+    		<input type="button" value="open cart"/>
+  		</div>
+  </div>
+  <div class="flex-container">
+    <div class="bookReview">
+      <div id="titleBook" class="previewInfo">this is book title</div>
+      <div class="imgInfo">
+        <div class="fig">
+          <img id="bookReviewImageID" class="bookReviewImage" src="" width="183" height="275" alt=""/>
+        </div>
+        <div class="addToCard">+ Add To Card</div>
+        <div id="bookdescription">book description: </div>
+      </div>
+      <div class="description">
+        <h>Description:
+        </h>
+      </div>
+      <div class="ItemvolumeInfo">
+        <table class="previewTable">
+          <tr>
+            <th class="head1"></th>
+            <th class="head2" > </th>
+          </tr>
+          <tr>
+            <td>ID:</td>
+            <td id="volumeid" > </td>
+          </tr>
+          <tr>
+            <td>Title:</td>
+            <td id="title" > </td>
+          </tr>
+          <tr>
+            <td>Authors:</td>
+            <td id="authors" > </td>
+          </tr>
+          <tr>
+            <td>Publisher:</td>
+            <td id="publisher" > </td>
+          </tr>
+          <tr>
+            <td>PublishedDate:</td>
+            <td id="publishedDate"> </td>
+          </tr>
+          <tr>
+            <td>Description:</td>
+            <td id="description" > </td>
+          </tr>
+          <tr>
+            <td>IndustryIdentifiers:</td>
+            <td id="industryIdentifiers" > </td>
+          </tr>
+          <tr>
+            <td>ReadingModes:</td>
+            <td id="readingModes" > </td>
+          </tr>
+          <tr>
+            <td>PageCount:</td>
+            <td id="pageCount"> </td>
+          </tr>
+          <tr>
+            <td>PrintType:</td>
+            <td id="printType"> </td>
+          </tr>
+          <tr>
+            <td>Categories:</td>
+            <td id="categories" > </td>
+          </tr>
+          <tr>
+            <td>ImageLinks:</td>
+            <td id="imageLinks"> </td>
+          </tr>
+          <tr>
+            <td>Language:</td>
+            <td id="language" > </td>
+          </tr>
+          <tr>
+            <td>PreviewLink:</td>
+            <td id="previewLink" > </td>
+          </tr>
+          <tr>
+            <td>InfoLink: </td>
+            <td id="infoLink"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="ItemsaleInfo">
+        <label class="previewTitleInfo"> </label>
+        <table class="previewTable">
+          <tr>
+            <th class="head1"></th>
+            <th class="head2" > </th>
+          </tr>
+          <tr>
+            <td>Country: </td>
+            <td id="country" > </td>
+          </tr>
+          <tr>
+            <td>Saleability: </td>
+            <td id="saleability" > </td>
+          </tr>
+          <tr>
+            <td>IsEbook: </td>
+            <td id="isEbook" > </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div id="rightPanelID" class="rightPanel">
+      <div class="bookshevels">
+        <div class="bookshevelsHeader">
+          <div class="showItemmode">
+            <div id="showButton1" class="showButton" onclick="expand(this.id)">
+              <img src="icon/more+plus+icon-1320166578601905135_64.ico" alt=""/>
+            </div>
+            <div class="bookshevelsInfo"> Bookshelves name
+            </div>
+          </div>
+        </div>
+        <div class="volumes">
+          <div class="volumeItem" onclick="showDesc(this.id)">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bookshevels">
+        <div class="bookshevelsHeader">
+          <div class="showItemmode">
+            <div class="showButton">
+              <img src="icon/more+plus+icon-1320166578601905135_64.ico" alt=""/>
+            </div>
+            <div class="bookshevelsInfo"> Bookshelves name
+            </div>
+          </div>
+        </div>
+        <div class="volumes">
+          <div class="volumeItem">
+            <div class="volumeImg"> <img src="img/dog.jpg" width="183" height="275" alt=""/> </div>
+            <div class="volumeInfo">
+              <div class="volumeTitle"> Google book volume name google book volume name </div>
+              <div class="volumeAuthors"> Google book volume author google book volume author </div>
+              <div class="Price"> 500.000đ </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+<script>
+function expand(clicked_id)
+{
+  var ID_Selected = clicked_id.substring(10);
+  var elementID = "searchvolumesResultID"+ ID_Selected;
+
+  var item = document.getElementById(elementID);
+  if("nowrap".localeCompare(item.style.flexWrap) == 0 || "".localeCompare(item.style.flexWrap)==0){
+    item.style.display ="flex";
+    item.style.flexWrap = "wrap";
+  }else {
+    console.log("no expand_");
+    item.style.overflow ="auto";
+    item.style.flexWrap = "nowrap";
+  }
+}
+var listbookdata =[];
+var bookshevels=[];
+function  searchBook(){
+  var term = document.getElementById("termbookSearchID").value;
+  var res = httpGet(term);
+  var bookdata = JSON.parse(res);
+  // console.log(currbookdata);
+  // console.log(currbookdata.kind);
+  // console.log(currbookdata.totalItems);
+  var rightPanel = document.getElementById("rightPanelID");
+  var bookshevel = "<div class='bookshevels'>"+
+  "<div class='bookshevelsHeader'>"+
+  "<div class='showItemmode'>"+
+  "<div id='showButton"+bookshevels.length+"' class='showButton' onclick='expand(this.id)'>"+
+  "<img src='icon/more+plus+icon-1320166578601905135_64.ico' alt=''/>"+
+  "</div>"+
+  "<div class='bookshevelsInfo'>"+"Search result for \""+term+"\""+
+  "</div>"+
+  "</div>"+
+  "</div>";
+  var volumes = "<div class='volumes noselect' id ='searchvolumesResultID"+bookshevels.length+"'>"
+  bookdata.items.forEach((item, i) => {
+    var Price = ( item.saleInfo===undefined?"": item.saleInfo.saleability );
+    volumes += "<div id='"+ item.id +"' class='volumeItem' onclick='showDesc(this.id)' >"+
+    "<div class='volumeImg'> <img src='"+ (item.volumeInfo.imageLinks===undefined?"":item.volumeInfo.imageLinks.smallThumbnail)  +"' alt=''/> </div>"+
+    "<div class='volumeInfo'>"+
+    "<div class='volumeTitle'> "+ item.volumeInfo.title + " </div>" +
+    "<div class='volumeAuthors'>"+ item.volumeInfo.authors+ " </div>" +
+    "<div class='Price'> " + ((Price.localeCompare("FREE"))?"free":(Price.localeCompare("NOT_FOR_SALE")?"not for sale":""))+ " </div>"+
+    "</div>"+
+    "</div>";
+  });
+  volumes+= "</div>";
+  bookshevel+=volumes;
+  bookshevel+="</div>";
+  bookshevels.unshift(bookshevel);
+  var HTMLCODE = "";
+  bookshevels.forEach((item, i) => {
+    HTMLCODE +=item;
+  });
+
+  rightPanel.innerHTML = HTMLCODE;
+  listbookdata.push(bookdata);
+}
+
+var listbookdataIdx = -1;
+var volumesIdx = -1;
+var selectedVolumeID = "";
+async function showDesc(id){
+    listbookdata.forEach((item, i) => {
+      item.items.forEach((item2, ii) => {
+        if (item2.id.localeCompare(id)==0) {
+          listbookdataIdx = i;
+          volumesIdx = ii;
+          selectedVolumeID = item2.id;
+          volume = item2 ;
+        }
+      });
+    });
+
+  if(volume===undefined) return;
+  document.getElementById("titleBook").innerHTML=volume.volumeInfo.title;
+  document.getElementById("bookReviewImageID").src=volume.volumeInfo.imageLinks.thumbnail;
+  document.getElementById("bookdescription").innerHTML=volume.volumeInfo.description;
+  document.getElementById("volumeid").innerHTML=volume.id;
+  document.getElementById("title").innerHTML=volume.volumeInfo.title;
+  if(volume.volumeInfo.authors!==undefined)
+  document.getElementById("authors").innerHTML=JSON.stringify(volume.volumeInfo.authors);
+  document.getElementById("publisher").innerHTML=volume.volumeInfo.publisher;
+  document.getElementById("publishedDate").innerHTML=volume.volumeInfo.publishedDate;
+  document.getElementById("description").innerHTML=volume.volumeInfo.description;
+  var industryIdentifiers = "";
+  if(volume.volumeInfo.industryIdentifiers!==undefined)
+  volume.volumeInfo.industryIdentifiers.forEach((item, i) => {
+    if(i>0){industryIdentifiers+="\n";}
+    industryIdentifiers+= "type: "+ item.type + ", " + "identifier: " +item.identifier;
+  });
+  document.getElementById("industryIdentifiers").innerHTML=industryIdentifiers;
+  document.getElementById("readingModes").innerHTML="text: "+volume.volumeInfo.readingModes.text+ ", image: "+volume.volumeInfo.readingModes.image;
+  document.getElementById("pageCount").innerHTML=volume.volumeInfo.pageCount;
+  document.getElementById("printType").innerHTML=volume.volumeInfo.printType;
+  var categories = "";
+  if(volume.volumeInfo.categories!==undefined)
+  volume.volumeInfo.categories.forEach((item, i) => {
+    if(i>0){categories+= ", ";}
+    categories+=  item ;
+  });
+  document.getElementById("categories").innerHTML=categories;
+  document.getElementById("imageLinks").innerHTML= "smallThumbnail: "+ volume.volumeInfo.imageLinks.smallThumbnail;language
+  document.getElementById("imageLinks").innerHTML+= "smallThumbnail: "+ volume.volumeInfo.imageLinks.thumbnail;
+  document.getElementById("language").innerHTML=volume.volumeInfo.language;
+  document.getElementById("previewLink").innerHTML=volume.volumeInfo.previewLink;
+  document.getElementById("infoLink").innerHTML=volume.volumeInfo.infoLink;
+
+  document.getElementById("country").innerHTML=volume.saleInfo.country;
+  document.getElementById("saleability").innerHTML=volume.saleInfo.saleability;
+  document.getElementById("isEbook").innerHTML=volume.saleInfo.isEbook;
+
+
+}
+
+//=========================================
+
+function prevVolume(){
+  if (volumesIdx>0) {
+    showDesc(listbookdata[listbookdataIdx].items[volumesIdx-1].id);
+  }
+}
+
+function nextVolume(){
+  if(volumesIdx < listbookdata[listbookdataIdx].items.length-1){
+    showDesc(listbookdata[listbookdataIdx].items[volumesIdx+1].id);
+  }
+}
+
+// Scroll div
+var leftMouseButtonOnlyDown = false;
+function setLeftButtonState(e) {
+
+  leftMouseButtonOnlyDown = e.buttons === undefined
+  ? e.which === 1
+  : e.buttons === 1;
+
+}
+
+var pressposition;
+var ID_Selected = "";
+function setLeftButtonState_(e) {
+  leftMouseButtonOnlyDown = e.buttons === undefined
+  ? e.which === 1
+  : e.buttons === 1;
+  lastPos = {"x":event.clientX, "y":  event.clientY};
+  var elementMouseIsOver = document.elementFromPoint(event.clientX, event.clientY);
+  if(elementMouseIsOver.classList.contains('volumeImg')){
+    ID_Selected = elementMouseIsOver.parentElement.parentElement.id;
+  }
+}
+
+function setLeftButtonState__(e) {
+  leftMouseButtonOnlyDown = e.buttons === undefined
+  ? e.which === 1
+  : e.buttons === 1;
+  // scroll continue move to die
+  continueScroll();
+}
+async function continueScroll(){
+  var len = 0;
+  var esp = 0;
+  if(D>=0){
+    len = D;
+    for (var i = 0; i < len; i+=2) {
+      document.getElementById(ID_Selected).scrollLeft -=(len -i)/10;
+      await sleep(5);
+    }
+  }else {
+    len = (-1*D);
+    for (var i = 0; i < len; i+=2) {
+      document.getElementById(ID_Selected).scrollLeft += (len -i)/10;
+      await sleep(5);
+    }
+  }
+  D =0;
+}
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+document.body.onmousedown = setLeftButtonState_;
+document.body.onmousemove = setLeftButtonState;
+document.body.onmouseup = setLeftButtonState__;
+
+
+var lastPos;
+var D = 0;
+document.addEventListener('mousemove', async function(e) {
+  if (leftMouseButtonOnlyDown) {
+    var x = e.clientX, y = e.clientY,
+    elementMouseIsOver = document.elementFromPoint(x, y);
+    //console.log(lastPos);
+    if (elementMouseIsOver!=null)
+    if(elementMouseIsOver.classList.contains('volumeImg')){// catch img
+      if(lastPos != null){
+        D = x-lastPos.x;
+      }
+      document.getElementById(ID_Selected).scrollLeft -= D;
+    }
+    lastPos = {"x": x, "y":y};
+  }
+});
+
+</script>
+</html>

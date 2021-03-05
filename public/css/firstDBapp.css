@@ -1,0 +1,89 @@
+@charset "utf-8";
+#messageBoxID {
+	display: inline;
+	min-width: 100%;
+	min-height: 250px;
+}
+#messageDivBoxID {
+	white-space: nowrap;
+	width: 100%;
+}
+#messageDivBoxID #notifBoxID {
+	width: 49%;
+	height: 150px;
+	text-shadow: 0px 0px #DBDBDB;
+	background-color: #6C6A6A;
+	border: none;
+	color: #FFFFFF;
+	box-sizing: border;
+	  display: inline-block;
+}
+#messageDivBoxID #logBoxID {
+	width: 49%;
+	height: 150px;
+	text-shadow: 0px 0px #DBDBDB;
+	background-color: #6C6A6A;
+	border: none;
+	color: #FFFFFF;
+	box-sizing: border;
+  white-space: nowrap;
+	  display: inline-block;
+}
+#toolBox {
+	margin-top: 5px;
+	margin-left: 3px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+#IndexedDBData_table_id {
+	font-family: Arial, Helvetica, sans-serif;
+	width: 50%;
+	border-collapse: collapse;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+#dataFiledID {
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+#dataFiledID th  {
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+}
+#dataFiledID th label{
+	float: left;
+	padding-right: 15px;
+}
+#dataFiledID th input{
+	float: left;
+	height: 18px;
+	width: 100%;
+	min-width: 250px;
+}
+.DBtool {
+	padding-top: 8px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border: none;
+	padding-bottom: 8px;
+	background-color: #3EB85B;
+	color: #FFFFFF;
+	text-align: center;
+	margin-right: 1px;
+}
+.DBtool:hover{
+	background-color: #4CD080;
+}
+.DBtool:disabled{
+	background-color: #499467;
+}
+#IndexedDBData_table_id td, #IndexedDBData_table_id th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}

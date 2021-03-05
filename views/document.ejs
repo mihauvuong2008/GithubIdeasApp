@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="css/homePageCSS.css" rel="stylesheet" type="text/css">
+<!--
+* <script src="D:/learning/Nodejs/GithubIdeasApp/node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+-->
+
+</head>
+
+<body>
+		<!-- Header here! -->
+    <%- include('header.ejs')%>
+		<!-- TopMenu here! -->
+    <%- include('topMenu.ejs')%>
+
+		<!-- navigationBar here! -->
+    <%- include('navigationBar.ejs')%>
+	<div class="bodyDiv" id="bodyDivID">
+    <div class="MainDiv">
+      <%- include('documentPage.ejs')%>
+	  </div>
+      <%- include('footer.ejs')%>
+  </div>
+</body>
+<script>
+window.onscroll = function() {myFunction()};
+var header = document.getElementById("myHeader");
+var sidenav = document.getElementById("sidenavID");
+var bodyDivID = document.getElementById("bodyDivID");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+    header.style.position="fixed";// sticky
+    sidenav.style.paddingTop ="70px";//75
+    bodyDivID.style.paddingTop ="57px";
+  } else {
+    header.style.position="relative";
+    sidenav.style.paddingTop =  (sticky - window.pageYOffset + 70)+"px";
+    bodyDivID.style.paddingTop ="0";
+  }
+}
+</script>
+
+</html>

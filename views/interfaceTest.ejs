@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>interfaceTest</title>
+<link href="css/homePageCSS.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+</style>
+</head>
+<script>
+function loadIndexDBappPage(){
+	document.getElementById('MainDivID').innerHTML = "\<\%- include('homePage.ejs')\%\>" ;
+}
+</script>
+<body>
+	<div class="header" id="header">
+		<a href="#">my logo</a>
+		<div class="loginButton">
+			<input type="button" value="login">
+		</div>
+		<div class="slogan">Content for  class "slogan" Goes Here</div>
+	</div>
+	<div class="topmenu">
+		<a href="#home">HOME</a>
+		<a href="#Data">DATA</a>
+		<a href="#User">USER</a>
+		<a href="#Info">INFO</a>
+	</div>
+	<div class="bodyDiv" id="bodyDivID">
+		<div class="sidenav" id="sidenavID" name="fixed Sidebar">
+			<a href="#menu1" onclick="loadIndexDBappPage();">notific panel</a>
+			<a href="#menu2">scroll log panel</a>
+			<a href="#menu3">menu3</a>
+			<a href="#menu4">menu4</a>
+			<a href="#menu5">menu5</a>
+		</div>
+		<div class="MainDiv" id="MainDivID">
+			<form class="FormDB">
+				<input type="button" class="DBbutton" id="LoadDB"  value="LoadDB">
+			</form>
+			<form class="FormDB">
+				<input type="button" class="DBbutton" id="QueryDB" value="QueryDB">
+			</form>
+			<form class="FormDB">
+				<input type="button" class="DBbutton" id="ClearDB" value="ClearDB">
+			</form>
+			<div class="notiPanel" id="notiPanelID">
+				<h2 class="NotHeader">notification panel</h2>
+				<div class="textArea">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

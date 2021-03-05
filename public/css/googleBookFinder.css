@@ -1,0 +1,406 @@
+@charset "utf-8";
+
+:root {
+  --volumeItem-Width:	165px;
+  --volumeItem-Height:	265px;
+  --previewvolume-Width:	250px;
+  --previewvolume-Height:	500px;
+  --volumeItem-Image-Height: 190px;
+  --bookReview-Width: 550px;
+  --volumeItem-Image-Width: 150px;
+  --flex-background-color: #F8F8F8;
+  --bookshevelsHeader-background-color: #DCDCDC;
+}
+html, body {
+    margin: 0;
+    height: 100%;
+}
+html{
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--flex-background-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--bookshevelsHeader-background-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bookshevelsHeader-background-color);
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: var( --flex-background-color);
+}
+
+.flex-container {
+	display: flex;
+	padding-top: 47px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	background-color: var( --flex-background-color);
+}
+
+.bookReview {
+	width: var(--bookReview-Width);
+	height: 100%;
+	display: block;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	overflow: visible;
+}
+.flex-container .bookReview .imgInfo {
+	display: block;
+	margin-top: 8px;
+}
+.bookReview .imgInfo .addToCard {
+	padding-top: 8px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+	padding-left: 8px;
+	font-size: large;
+	background-color: #2D8CEB;
+	color: #F8F8F8;
+	margin-top: 6px;
+	margin-right: 3px;
+	margin-bottom: 6px;
+	margin-left: 3px;
+}
+.bookReview .imgInfo .addToCard:hover {
+	-webkit-box-shadow: 0 0 4px 2px #C7CAD7;
+	box-shadow: 0 0 4px 2px #C7CAD7;
+	cursor: pointer;
+
+}
+
+
+
+
+
+.flex-container #viewerCanvas .ItemvolumeInfo {
+	display: block;
+}
+
+
+#viewerCanvas .ItemsaleInfo .bookReviewImage {
+	object-fit: contain;
+	overflow: auto;
+	height: var(--previewvolume-Height);
+	width: var(--previewvolume-Width);
+	border-style: solid;
+}
+.bookReview .imgInfo .fig {
+	/* [disabled]border: 1px solid #C7C7C7; */
+	overflow: auto;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	width: var(--previewvolume-Width);
+	background-color: #F5F5F5;
+	box-shadow: 2px 2px 4px 0px #e2cb8a;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	margin-top: 3px;
+	margin-right: 3px;
+	margin-bottom: 3px;
+	margin-left: 3px;
+}
+
+.bookReview .imgInfo #bookdescription {
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	font-size: 13px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: justify;
+	color: #5D5D5D;
+}
+.bookReview .description  {
+	padding-top: 15px;
+	padding-right: 3px;
+	padding-left: 3px;
+	font-size: 18px;
+	font-weight: 600;
+	padding-bottom: 3px;
+}
+
+
+.flex-container .bookReview .previewInfo {
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size: 25px;
+	font-weight: 600;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	line-height: 27px;
+}
+.flex-container .bookReview .ItemvolumeInfo {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	box-sizing: border-box;
+}
+
+.flex-container .bookReview .ItemvolumeInfo tr td {
+	vertical-align: top;
+	text-align: left;
+}
+.bookReview .ItemvolumeInfo .previewTable {
+	table-layout: fixed;
+	width: 100%;
+	font-size: 15px;
+}
+.bookReview .ItemvolumeInfo .previewTable tr td {
+	word-break:break-all;
+}
+.previewTable tr .head1 {
+	width: 110px;
+}
+
+.previewTable tr .head2 {
+}
+
+
+
+.rightPanel {
+	width: 100%;
+	height: 100%;
+	background-color: var(--flex-background-color);
+	display: list-item;
+	overflow-x: auto;
+	margin-left: 15px;
+}
+.toolbar {
+	width: 100%;
+	background-color: #969696;
+	box-shadow: 0px 5px 5px 0px #cccccc;
+	z-index: 1;
+	position: fixed;
+	overflow: auto;
+}
+
+.toolbar .tool {
+	float: left;
+	margin-top: 4px;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	margin-left: 4px;
+	display: grid;
+	grid-auto-flow: column;
+	padding-top: 4px;
+	padding-right: 4px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+}
+.toolbar .tool .homeButton {
+	background-color: #F2F2F2;
+	margin-left: 0px;
+}
+.toolbar .tool .homeButton:hover {
+	background-color: #E5E5E5;
+	cursor: default;
+}
+
+.tool .homeButton img {
+	object-fit: contain;
+	overflow: auto;
+  	height: 20px;
+  	width: 20px;
+  	pointer-events: none;
+}
+
+
+
+.toolbar .tool #termbookSearchID {
+	width: 300px;
+}
+
+
+.flex-container .rightPanel .bookshevels {
+	display: list-item;
+	overflow: auto;
+	display: block;
+	overflow: hidden;
+	/* [disabled]margin-right: 5px; */
+	margin-bottom: 20px;
+	border-left: 1px none #EBEBEB;
+	border-right: 1px none #EBEBEB;
+	border-bottom: 1px solid #EBEBEB;
+	border-top: 1px none #EBEBEB;
+	margin-top: 5px;
+}
+
+.rightPanel .bookshevels .bookshevelsHeader {
+	width: 100%;
+	position: relative;
+	overflow: auto;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.bookshevelsHeader .showItemmode .showButton {
+	float: left;
+	display: grid;
+	grid-auto-flow: column;
+}
+.bookshevelsHeader .showItemmode .showButton:hover {
+	background-color: #E4E4E4;
+	cursor: pointer;
+}
+
+.bookshevelsHeader .showItemmode .showButton img {
+	display: block;
+	object-fit: contain;
+	overflow: auto;
+  	height: 25px;
+  	width: 25px;
+}
+
+.bookshevelsHeader .showItemmode .bookshevelsInfo {
+	float: left;
+	display: grid;
+	grid-auto-flow: column;
+	height: 25px;
+	margin-top: 0px;
+	margin-right: 0;
+	margin-left: 30px;
+	margin-bottom: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	font-weight: 600;
+	font-size: 17px;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+}
+
+
+.volumes {
+	white-space: nowrap;
+	margin-top: 5px;
+	margin-left: 5px;
+	/*overflow: hidden;	hide scrollbar*/
+	overflow: auto;
+	padding-bottom: 9px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.volumes:hover {
+
+	/*overflow: auto;	show scrollbar*/
+}
+
+.volumesWrap {
+	display: flex;
+	flex-wrap: wrap;
+}
+.volumeItem {
+	display: inline-block;
+	width: var(--volumeItem-Width);
+	height: var(--volumeItem-Height);
+	background-color: #F3F3F3;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	/* [disabled]box-shadow: 1px 2px 2px 0px #e2cb8a; */
+	/* [disabled]-webkit-box-shadow: 1px 2px 2px 0px #e2cb8a; */
+}
+
+.volumes .volumeItem:hover {
+	cursor: pointer;
+}
+
+.volumeItem:hover {
+	background-color: #FCF5EC;
+	box-shadow: 2px 4px 4px 0px #c2ab89;
+}
+.volumes .volumeItem .volumeImg {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+.volumeItem .volumeImg   img {
+	object-fit: contain;
+	overflow: auto;
+  	height: var(--volumeItem-Image-Height);
+  	width: var(--volumeItem-Image-Width);
+  	pointer-events: none;
+}
+.volumes .volumeItem .volumeInfo {
+	margin-top: 5px;
+	padding-left: 4px;
+	padding-right: 4px;
+
+}
+
+.volumes .volumeItem .volumeInfo .volumeTitle {
+	font-size: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: clip;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	color: #99842F;
+	text-align: justify;
+	font-weight: 600;
+}
+.volumeItem .volumeInfo .volumeAuthors {
+	font-size: 12px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: clip;
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	text-shadow: 0px 0px;
+	color: #767676;
+}
+.volumes .volumeItem .volumeInfo .Price {
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size: 16px;
+	text-align: center;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+}
+
+
+
+
+#bookSearch {
+	min-width: 250px;
+}
+.caption {
+}
