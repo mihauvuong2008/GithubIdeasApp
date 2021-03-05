@@ -4,6 +4,7 @@
   --volumeItem-Width:	165px;
   --volumeItem-Height:	265px;
   --previewvolume-Width:	250px;
+  --previewvolume-minWidth:	220px;
   --previewvolume-Height:	500px;
   --volumeItem-Image-Height: 190px;
   --bookReview-Width: 550px;
@@ -73,7 +74,7 @@ body {
 	font-size: large;
 	background-color: #2D8CEB;
 	color: #F8F8F8;
-	margin-top: 6px;
+	margin-top: 10px;
 	margin-right: 3px;
 	margin-bottom: 6px;
 	margin-left: 3px;
@@ -101,14 +102,19 @@ body {
 	width: var(--previewvolume-Width);
 	border-style: solid;
 }
+.bookReview .imgInfo .volumeinfo {
+	display: inline-flex;
+}
+
 .bookReview .imgInfo .fig {
 	/* [disabled]border: 1px solid #C7C7C7; */
 	overflow: auto;
 	align-items: center;
 	display: flex;
 	justify-content: center;
+	min-width: var(--previewvolume-minWidth);
 	width: var(--previewvolume-Width);
-	background-color: #F5F5F5;
+	background-color: #F4F4F4;
 	box-shadow: 2px 2px 4px 0px #e2cb8a;
 	padding-top: 5px;
 	padding-right: 5px;
@@ -119,13 +125,43 @@ body {
 	margin-bottom: 3px;
 	margin-left: 3px;
 }
+.imgInfo .volumeinfo .shortDesc {
+	display: block;
+	font-size: 13px;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	margin-left: 5px;
+}
+.volumeinfo .shortDesc .shortDescchild {
+	margin-bottom: 3px;
+}
+.volumeinfo .shortDesc #authorsshortDesc {
+	color: #2D8CEB;
+}
+.volumeinfo .shortDesc #publishedDateshortDesc {
+	color: #979797;
+}
+.volumeinfo .shortDesc #priceshortDesc {
+	color: #B5872F;
+	font-size: 15px;
+}
+
+
+
+
+.volumeinfo .shortDesc .authorsDesc {
+}
+
+
 
 .bookReview .imgInfo #bookdescription {
 	padding-top: 3px;
 	padding-right: 3px;
 	padding-bottom: 3px;
 	padding-left: 3px;
-	font-size: 13px;
+	font-size: 12px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -136,7 +172,7 @@ body {
 	padding-top: 15px;
 	padding-right: 3px;
 	padding-left: 3px;
-	font-size: 18px;
+	font-size: 17px;
 	font-weight: 600;
 	padding-bottom: 3px;
 }
@@ -144,7 +180,7 @@ body {
 
 .flex-container .bookReview .previewInfo {
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
-	font-size: 25px;
+	font-size: 23px;
 	font-weight: 600;
 	padding-top: 3px;
 	padding-right: 3px;
@@ -165,7 +201,7 @@ body {
 .bookReview .ItemvolumeInfo .previewTable {
 	table-layout: fixed;
 	width: 100%;
-	font-size: 15px;
+	font-size: 14px;
 }
 .bookReview .ItemvolumeInfo .previewTable tr td {
 	word-break:break-all;
@@ -279,17 +315,14 @@ body {
 	float: left;
 	display: grid;
 	grid-auto-flow: column;
-	height: 25px;
-	margin-top: 0px;
-	margin-right: 0;
+	height: 23px;
 	margin-left: 30px;
-	margin-bottom: 0;
 	position: absolute;
 	top: 50%;
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 	font-weight: 600;
-	font-size: 17px;
+	font-size: 15px;
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
 }
 
@@ -300,7 +333,7 @@ body {
 	margin-left: 5px;
 	/*overflow: hidden;	hide scrollbar*/
 	overflow: auto;
-	padding-bottom: 9px;
+	padding-bottom: 8px;
 }
 
 .noselect {

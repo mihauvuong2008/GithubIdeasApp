@@ -35,9 +35,29 @@
     <div class="bookReview">
       <div id="titleBook" class="previewInfo">this is book title</div>
       <div class="imgInfo">
-        <div class="fig">
-          <img id="bookReviewImageID" class="bookReviewImage" src="" width="183" height="275" alt=""/>
+        <div class="volumeinfo">
+          <div class="fig bookReviewImage">
+            <img id="bookReviewImageID"  src="" width="183" height="275" alt=""/>
+          </div>
+          <div class="shortDesc">
+            <div class="shortDescchild" id="authorsshortDesc">
+              some text some text some text some text some text
+            </div>
+  					<div class="shortDescchild" id="publishershortDesc">
+              some text some text some text some text some text
+  					</div>
+            <div class="shortDescchild" id="publishedDateshortDesc">
+              some text some text some text some text some text
+            </div>
+            <div class="shortDescchild" id="pageCountshortDesc">
+              some text some text some text some text some text
+            </div>
+            <div class="shortDescchild" id="priceshortDesc">
+              some text some text some text some text some text
+            </div>
+          </div>
         </div>
+
         <div class="addToCard">+ Add To Card</div>
         <div id="bookdescription">book description: </div>
       </div>
@@ -340,6 +360,14 @@ async function showDesc(id){
     });
 
   if(volume===undefined) return;
+
+  if(volume.volumeInfo.authors!==undefined)
+  document.getElementById("authorsshortDesc").innerHTML=JSON.stringify(volume.volumeInfo.authors);
+  document.getElementById("publishershortDesc").innerHTML=volume.volumeInfo.publisher;
+  document.getElementById("publishedDateshortDesc").innerHTML="Published date: "+volume.volumeInfo.publishedDate;
+  document.getElementById("pageCountshortDesc").innerHTML= "Page count: "+volume.volumeInfo.pageCount;
+  document.getElementById("priceshortDesc").innerHTML=volume.saleInfo.saleability;
+  //=============
   document.getElementById("titleBook").innerHTML=volume.volumeInfo.title;
   document.getElementById("bookReviewImageID").src=volume.volumeInfo.imageLinks.thumbnail;
   document.getElementById("bookdescription").innerHTML=volume.volumeInfo.description;
