@@ -3,21 +3,24 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <script src="javascript/googleBookAPIquerydata.js"></script>
+  <script src="javascript/googleBookindexedDBquery.js"></script>
+  <script src="javascript/googlebookcart.js"></script>
   <script >
   </script>
   <link href="/css/googleBookFinder.css" rel="stylesheet" type="text/css" />
+  <link href="/css/googlebookcart.css" rel="stylesheet" type="text/css">
 </head>
 <body >
   <div class="toolbar">
     <div class="tool">
-   	  <div class="homeButton">
-		  <img src="/icon/iconfinder_Home-01_1976053.png" width="24" height="24" alt=""/>
-	  </div>
+      <div class="homeButton">
+        <img src="/icon/iconfinder_Home-01_1976053.png" width="24" height="24" alt=""/>
+      </div>
     </div>
     <div class="tool">
       <input type="text" id="termbookSearchID" />
       <input id="searchBookID" type="button" onclick="searchBook()" value="search"/>
-    	<input type="button" value="clear"/>
+      <input type="button" value="clear"/>
     </div>
     <div class="tool">
       <input type="button" value="zoom out"/>
@@ -27,9 +30,9 @@
       <input type="button" value="prev" onclick="prevVolume()"/>
       <input type="button" value="next" onclick="nextVolume()"/>
     </div>
-	   <div class="tool">
-    		<input type="button" value="open cart"/>
-  		</div>
+    <div class="tool">
+      <input type="button" onclick="openBookcart()" value="open cart"/>
+    </div>
   </div>
   <div class="flex-container">
     <div class="bookReview">
@@ -43,9 +46,9 @@
             <div class="shortDescchild" id="authorsshortDesc">
               some text some text some text some text some text
             </div>
-  					<div class="shortDescchild" id="publishershortDesc">
+            <div class="shortDescchild" id="publishershortDesc">
               some text some text some text some text some text
-  					</div>
+            </div>
             <div class="shortDescchild" id="publishedDateshortDesc">
               some text some text some text some text some text
             </div>
@@ -58,7 +61,7 @@
           </div>
         </div>
 
-        <div class="addToCard">+ Add To Card</div>
+        <div class="addToCard" onclick="addToCard()">+ Add To Card</div>
         <div id="bookdescription">book description: </div>
       </div>
       <div class="description">
@@ -282,6 +285,110 @@
 
     </div>
   </div>
+
+  <div id="bookcartID" class="bookcart">
+
+    <div class="bookcart-content">
+      <div class="bookcart-header">
+        <div class="title">
+          Book cart title here
+        </div>
+        <div class="bookcartClose">
+          <span class="close" onclick="closeBookcart()">&times;</span>
+        </div>
+      </div>
+      <div id="listCartitem">
+          <div class="bookcart-item">
+          <div class="bookpay-selector">
+            <input type="checkbox" class="slector">
+          </div>
+          <div class="bookcart-item-thumbnail">
+            <img src="/img/dog.jpg" width="183" height="275" alt=""/>
+          </div>
+          <div class="bookcart-item-description">
+            <div class="item-description bookcart-item-title">Content for  class "bookcart-item-title" Goes Here</div>
+            <div class="item-description bookcart-item-author">Content for  class "bookcart-item-author" Goes Here</div>
+            <div class="item-description bookcart-item-publisher">Content for  class "bookcart-item-publisher" Goes Here</div>
+            <div class="item-description bookcart-item-publishedDate">
+              Content for  class "bookcart-item-publishedDate" Goes Here
+              Content for  class "bookcart-item-publishedDate" Goes Here
+              Content for  class "bookcart-item-publishedDate" Goes Here
+              Content for  class "bookcart-item-publishedDate" Goes Here
+              Content for  class "bookcart-item-publishedDate" Goes Here
+              Content for  class "bookcart-item-publishedDate" Goes Here
+              Content for  class "bookcart-item-publishedDate" Goes Here
+              Content for  class "bookcart-item-publishedDate" Goes Here
+              Content for  class "bookcart-item-publishedDate" Goes Here
+              Content for  class "bookcart-item-publishedDate" Goes Here
+            </div>
+            <div class="item-description price">
+              <div class="discount">800.000d</div>
+              <div class="bookcart-item-price">500.000d</div>
+            </div>
+            <div class="item-quantily-voucher">
+              <div class="item-quantily">
+                <div class="quantily-control quantily-down">-
+                </div>
+                <div class="quantily">1
+                </div>
+                <div class="quantily-control quantily-up">+
+                </div>
+              </div>
+              <div class="item-voucher"> use voucher!
+              </div>
+            </div>
+          </div>
+          <div class="bookcart-item-remove">
+            <span class="close">&times;</span>
+          </div>
+        </div>
+        <div class="bookcart-item">
+        <div class="bookpay-selector">
+          <input type="checkbox" class="slector">
+        </div>
+        <div class="bookcart-item-thumbnail">
+          <img src="/img/dog.jpg" width="183" height="275" alt=""/>
+        </div>
+        <div class="bookcart-item-description">
+          <div class="item-description bookcart-item-title">Content for  class "bookcart-item-title" Goes Here</div>
+          <div class="item-description bookcart-item-author">Content for  class "bookcart-item-author" Goes Here</div>
+          <div class="item-description bookcart-item-publisher">Content for  class "bookcart-item-publisher" Goes Here</div>
+          <div class="item-description bookcart-item-publishedDate">
+            Content for  class "bookcart-item-publishedDate" Goes Here
+            Content for  class "bookcart-item-publishedDate" Goes Here
+            Content for  class "bookcart-item-publishedDate" Goes Here
+            Content for  class "bookcart-item-publishedDate" Goes Here
+          </div>
+          <div class="item-description price">
+            <div class="discount">800.000d</div>
+            <div class="bookcart-item-price">500.000d</div>
+          </div>
+          <div class="item-quantily-voucher">
+            <div class="item-quantily">
+              <div class="quantily-control quantily-down">-
+              </div>
+              <div class="quantily">1
+              </div>
+              <div class="quantily-control quantily-up">+
+              </div>
+            </div>
+            <div class="item-voucher"> use voucher!
+            </div>
+          </div>
+        </div>
+        <div class="bookcart-item-remove">
+          <span class="close">&times;</span>
+        </div>
+      </div>
+
+      </div>
+
+      <div class="bookcart-control">
+        <div class="bookcar-pay" onclick="payTitle()"> PAY </div>
+        <div class="bookcar-close" onclick="closeBookcart()">Close</div>
+      </div>
+    </div>
+  </div>
 </body>
 <script>
 function expand(clicked_id)
@@ -347,63 +454,64 @@ function  searchBook(){
 var listbookdataIdx = -1;
 var volumesIdx = -1;
 var selectedVolumeID = "";
+var selectedVolume;
 async function showDesc(id){
-    listbookdata.forEach((item, i) => {
-      item.items.forEach((item2, ii) => {
-        if (item2.id.localeCompare(id)==0) {
-          listbookdataIdx = i;
-          volumesIdx = ii;
-          selectedVolumeID = item2.id;
-          volume = item2 ;
-        }
-      });
+  listbookdata.forEach((item, i) => {
+    item.items.forEach((item2, ii) => {
+      if (item2.id.localeCompare(id)==0) {
+        listbookdataIdx = i;
+        volumesIdx = ii;
+        selectedVolumeID = item2.id;
+        selectedVolume = item2 ;
+      }
     });
+  });
 
-  if(volume===undefined) return;
+  if(selectedVolume===undefined) return;
 
-  if(volume.volumeInfo.authors!==undefined)
-  document.getElementById("authorsshortDesc").innerHTML=JSON.stringify(volume.volumeInfo.authors);
-  document.getElementById("publishershortDesc").innerHTML=volume.volumeInfo.publisher;
-  document.getElementById("publishedDateshortDesc").innerHTML="Published date: "+volume.volumeInfo.publishedDate;
-  document.getElementById("pageCountshortDesc").innerHTML= "Page count: "+volume.volumeInfo.pageCount;
-  document.getElementById("priceshortDesc").innerHTML=volume.saleInfo.saleability;
+  if(selectedVolume.volumeInfo.authors!==undefined)
+  document.getElementById("authorsshortDesc").innerHTML=JSON.stringify(selectedVolume.volumeInfo.authors);
+  document.getElementById("publishershortDesc").innerHTML=selectedVolume.volumeInfo.publisher;
+  document.getElementById("publishedDateshortDesc").innerHTML="Published date: "+selectedVolume.volumeInfo.publishedDate;
+  document.getElementById("pageCountshortDesc").innerHTML= "Page count: "+selectedVolume.volumeInfo.pageCount;
+  document.getElementById("priceshortDesc").innerHTML=selectedVolume.saleInfo.saleability;
   //=============
-  document.getElementById("titleBook").innerHTML=volume.volumeInfo.title;
-  document.getElementById("bookReviewImageID").src=volume.volumeInfo.imageLinks.thumbnail;
-  document.getElementById("bookdescription").innerHTML=volume.volumeInfo.description;
-  document.getElementById("volumeid").innerHTML=volume.id;
-  document.getElementById("title").innerHTML=volume.volumeInfo.title;
-  if(volume.volumeInfo.authors!==undefined)
-  document.getElementById("authors").innerHTML=JSON.stringify(volume.volumeInfo.authors);
-  document.getElementById("publisher").innerHTML=volume.volumeInfo.publisher;
-  document.getElementById("publishedDate").innerHTML=volume.volumeInfo.publishedDate;
-  document.getElementById("description").innerHTML=volume.volumeInfo.description;
+  document.getElementById("titleBook").innerHTML=selectedVolume.volumeInfo.title;
+  document.getElementById("bookReviewImageID").src=selectedVolume.volumeInfo.imageLinks.thumbnail;
+  document.getElementById("bookdescription").innerHTML=selectedVolume.volumeInfo.description;
+  document.getElementById("volumeid").innerHTML=selectedVolume.id;
+  document.getElementById("title").innerHTML=selectedVolume.volumeInfo.title;
+  if(selectedVolume.volumeInfo.authors!==undefined)
+  document.getElementById("authors").innerHTML=JSON.stringify(selectedVolume.volumeInfo.authors);
+  document.getElementById("publisher").innerHTML=selectedVolume.volumeInfo.publisher;
+  document.getElementById("publishedDate").innerHTML=selectedVolume.volumeInfo.publishedDate;
+  document.getElementById("description").innerHTML=selectedVolume.volumeInfo.description;
   var industryIdentifiers = "";
-  if(volume.volumeInfo.industryIdentifiers!==undefined)
-  volume.volumeInfo.industryIdentifiers.forEach((item, i) => {
+  if(selectedVolume.volumeInfo.industryIdentifiers!==undefined)
+  selectedVolume.volumeInfo.industryIdentifiers.forEach((item, i) => {
     if(i>0){industryIdentifiers+="\n";}
     industryIdentifiers+= "type: "+ item.type + ", " + "identifier: " +item.identifier;
   });
   document.getElementById("industryIdentifiers").innerHTML=industryIdentifiers;
-  document.getElementById("readingModes").innerHTML="text: "+volume.volumeInfo.readingModes.text+ ", image: "+volume.volumeInfo.readingModes.image;
-  document.getElementById("pageCount").innerHTML=volume.volumeInfo.pageCount;
-  document.getElementById("printType").innerHTML=volume.volumeInfo.printType;
+  document.getElementById("readingModes").innerHTML="text: "+selectedVolume.volumeInfo.readingModes.text+ ", image: "+selectedVolume.volumeInfo.readingModes.image;
+  document.getElementById("pageCount").innerHTML=selectedVolume.volumeInfo.pageCount;
+  document.getElementById("printType").innerHTML=selectedVolume.volumeInfo.printType;
   var categories = "";
-  if(volume.volumeInfo.categories!==undefined)
-  volume.volumeInfo.categories.forEach((item, i) => {
+  if(selectedVolume.volumeInfo.categories!==undefined)
+  selectedVolume.volumeInfo.categories.forEach((item, i) => {
     if(i>0){categories+= ", ";}
     categories+=  item ;
   });
   document.getElementById("categories").innerHTML=categories;
-  document.getElementById("imageLinks").innerHTML= "smallThumbnail: "+ volume.volumeInfo.imageLinks.smallThumbnail;language
-  document.getElementById("imageLinks").innerHTML+= "smallThumbnail: "+ volume.volumeInfo.imageLinks.thumbnail;
-  document.getElementById("language").innerHTML=volume.volumeInfo.language;
-  document.getElementById("previewLink").innerHTML=volume.volumeInfo.previewLink;
-  document.getElementById("infoLink").innerHTML=volume.volumeInfo.infoLink;
+  document.getElementById("imageLinks").innerHTML= "smallThumbnail: "+ selectedVolume.volumeInfo.imageLinks.smallThumbnail;language
+  document.getElementById("imageLinks").innerHTML+= "smallThumbnail: "+ selectedVolume.volumeInfo.imageLinks.thumbnail;
+  document.getElementById("language").innerHTML=selectedVolume.volumeInfo.language;
+  document.getElementById("previewLink").innerHTML=selectedVolume.volumeInfo.previewLink;
+  document.getElementById("infoLink").innerHTML=selectedVolume.volumeInfo.infoLink;
 
-  document.getElementById("country").innerHTML=volume.saleInfo.country;
-  document.getElementById("saleability").innerHTML=volume.saleInfo.saleability;
-  document.getElementById("isEbook").innerHTML=volume.saleInfo.isEbook;
+  document.getElementById("country").innerHTML=selectedVolume.saleInfo.country;
+  document.getElementById("saleability").innerHTML=selectedVolume.saleInfo.saleability;
+  document.getElementById("isEbook").innerHTML=selectedVolume.saleInfo.isEbook;
 
 
 }
@@ -452,6 +560,7 @@ function setLeftButtonState__(e) {
   // scroll continue move to die
   continueScroll();
 }
+
 async function continueScroll(){
   var len = 0;
   var esp = 0;
@@ -496,6 +605,91 @@ document.addEventListener('mousemove', async function(e) {
     lastPos = {"x": x, "y":y};
   }
 });
+// cart
+async function openBookcart(){
+  document.getElementById("bookcartID").style.display = "block";
+  loadCartContent();
+}
 
+async function loadCartContent() {
+
+    var cartData = await loadAllData();
+    var cartContent = "";
+
+  console.log("cartData:", cartData);
+    await cartData.forEach((item, i) => {
+      cartContent+="<div id = 'bookcart-item"+item.id+"' class='bookcart-item'>"
+      +"<div class='bookpay-selector'>"
+      +"<input id = 'bookcart-item"+item.id+"' type='checkbox' class='slector'>"
+      +"</div>"
+      +"<div class='bookcart-item-thumbnail'>"
+      +"<img src='"+item.volumeData.volumeInfo.imageLinks.smallThumbnail+"' width='183' height='275' alt=''/>"
+      +"</div>"
+      +"<div class='bookcart-item-description'>"
+      +"<div class='item-description bookcart-item-title'>"+ item.volumeData.volumeInfo.title +"</div>"
+      +"<div class='item-description bookcart-item-author'>"+ item.volumeData.volumeInfo.authors +"</div>"
+      +"<div class='item-description bookcart-item-publisher'>publisher: "
+      + item.volumeData.publisher +", published Date: "+ item.volumeData.volumeInfo.publishedDate+", page count: "
+      + item.volumeData.pageCount+ "</div>"
+      +"<div class='item-description bookcart-item-publishedDate'>"+ (item.volumeData.volumeInfo.description===undefined?"--": item.volumeData.volumeInfo.description.substring(0,200)) +"</div>"
+      +"<div class='item-description price'>"
+      +"<div class='discount'>" + item.discount + "</div>"
+      +"<div class='bookcart-item-price'>" + item.volumeData.saleInfo.saleability + "</div>"
+      +"</div>"
+      +"<div class='item-quantily-voucher'>"
+      +"<div class='item-quantily'>"
+      +"<div class='quantily-control quantily-down'>-"
+      +"</div>"
+      +"<div class='quantily'>" + item.quantily
+      +"</div>"
+      +"<div class='quantily-control quantily-up'>+"
+      +"</div>"
+      +"</div>"
+      +"<div class='item-voucher'> use voucher!"
+      +"</div>"
+      +"</div>"
+      +"</div>"
+      +"<div class='bookcart-item-remove'>"
+      +"<span  id = 'bookcart-item"+item.id+"' onclick='removeBookCartItem(this.id)' class='close'>&times;</span>"
+      +"</div>"
+      +"</div>"
+      +"</div>"
+
+    });
+  document.getElementById("listCartitem").innerHTML = cartContent;
+
+}
+
+function closeBookcart(){
+  document.getElementById("bookcartID").style.display = "none";
+}
+
+function removeBookCartItem(id){
+  volumeCart_idxDB_removeData(id.substring(13));
+  loadCartContent();
+}
+
+function addToCard(){
+  if(selectedVolumeID==undefined)return;
+  // set user infor discount here
+  var discount = "200.000"
+  // default = 1
+  var quantily = 1;
+  // set voucherID here
+  var voucherID = "1";
+  var volumeitemData = new volumeData(selectedVolume, discount, quantily, voucherID);
+  volumeCart_idxDB_addData(volumeitemData);
+}
+
+window.onclick = function(event) {
+  var modal = document.getElementById("bookcartID");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+window.onload = function(event) {
+    initindexedDB();
+}
 </script>
 </html>

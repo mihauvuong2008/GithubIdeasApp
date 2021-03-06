@@ -157,7 +157,7 @@ class Customer {
     // mo ket noi IndexedDB
     const request = indexedDB.open(this.dbName, version);
 
-    return  new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, reject) {
     //kiem tra loi?!!
     request.onerror = (event) => {
          showStatus('initialLoad - Database error: '+ event.target.error.code+
