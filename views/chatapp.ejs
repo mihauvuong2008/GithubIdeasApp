@@ -1,0 +1,720 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>chatapp</title>
+  <link href="/css/chatapp.css" rel="stylesheet" type="text/css">
+  <script src="/javascript/chatapp.js"></script>
+</head>
+
+<body>
+  <div class="chatpanel">
+
+    <div  id="pupleboxID" class="puplebox">
+      <div id="pupleID" class="puple" onclick="showtoolbar()"></div>
+      <div id="toolbarID" class="toolbar">
+        <div class="user_name">your username</div>
+        <div id="logout_buttonID" class="toolbarbutton logout_button">logout</div>
+        <div id="login_buttonID" class="toolbarbutton login_button">login</div>
+        <div class="toolbarbutton addfriend">add friend</div>
+        <div class="toolbarbutton newgroup">new group</div>
+      </div>
+    </div>
+    <div id="friendlistID" class="friendlist">
+      <div class="frienditem">
+        <div class="onlinestatus">
+        </div>
+        <div class="icon">
+        </div>
+        <div class="username"> username
+        </div>
+      </div>
+
+
+    </div>
+
+    <div id="yourgroupID" class="yourgroup">
+      <div class="groupitem">
+        <div class="onlinestatus">
+        </div>
+        <div class="groupicon">
+          <div class="groupicon"></div>
+          <div class="groupicon"></div>
+          <div class="groupicon"></div>
+        </div>
+
+        <div class="groupitemname">
+          <div class="groupname">Content for  class "groupname" Goes Here</div>
+        </div>
+      </div>
+    </div>
+    <div class="chatboxbean">
+      <div class="chatbox">
+
+        <div class="typingbox">
+          <textarea id="typingboxID" class="mess" type="text"  oninput="auto_grow(this)" onkeypress="typingbox_handle(event)"></textarea>
+          <div class="sendbutton" onclick="sendMessage()">send</div>
+        </div>
+        <div id="messageboxID" class="messagebox" onscroll="seruser_isscrollboxtrue()">
+
+          <div class="messageitem">
+            <div class="messageitem_icon">
+            </div>
+            <div class="userchatboxmessagae">
+              <div class="messageinfo">info message here</div>
+              <div class="messgetext">4Content for  class "messgetext" Goes Here</div>
+            </div>
+          </div>
+
+          <div class="messageitem">
+            <div class="somebodytyping_chatboxmessagae">1someone is typing...</div>
+          </div>
+        </div>
+        <div id="memberID" class="member">
+          <div class="memberitem">
+            <div class="onlinestatus">
+            </div>
+            <div class="icon">
+            </div>
+            <div class="username"> username
+            </div>
+            <div class="removemember">
+              &times;</div>
+            </div>
+            <div class="memberitem">
+              <div class="onlinestatus">
+              </div>
+              <div class="icon">
+              </div>
+              <div class="username"> username
+              </div>
+            </div>
+            <div class="memberitem">
+              <div class="onlinestatus">
+              </div>
+              <div class="icon">
+              </div>
+              <div class="username"> username
+              </div>
+            </div>
+            <div class="memberitem">
+              <div class="onlinestatus">
+              </div>
+              <div class="icon">
+              </div>
+              <div class="username"> username
+              </div>
+            </div>
+            <div class="memberitem">
+              <div class="memberinvite"> invite friend
+              </div>
+            </div>
+          </div>
+          <div class="titlechatbox">
+            <div id="chatboxnameID" class="chatboxname">your group name</div>
+            <div class="controlchatbox">
+              <div class="chatbox_minimize">-
+              </div>
+              <div class="chatbox_maximize">
+              </div>
+              <div class="chatbox_close">x</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <p/>
+    <p/>
+    <p/>
+    <div id="loginformID" class="login">
+      <div class="loginform">
+
+        <div class="relativebox">
+          <div class="field-table">
+            <div class="row">
+              <div class="col1">
+                <label>Usernane: </label>
+              </div>
+              <div class="col2">
+                <input id="username" class="fieldinput" type="text">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col1">
+                <label>Password: </label>
+              </div>
+              <div class="col2">
+                <input id="password" class="fieldinput" type="password">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col2">
+                <input class="button" type="button" onclick="cancel()" value="cancel">
+                <input class="button" type="button" onclick="login()" value="login">
+              </div>
+            </div>
+          </div>
+          <div id ="loginstatusID" class="loginstatus">Content for  class "loginstatus" Goes Here</div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+
+  var yourID;
+  async function login(){
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var data = {"username": username, "password": password };
+    var login_authenticate = await httploginchecker(data);
+    if(login_authenticate.default.status!==undefined){
+      if(login_authenticate.default.status.localeCompare("login_false")==0){
+        document.getElementById("loginformID").style.display = "block";
+        document.getElementById("loginstatusID").innerHTML = "login false";
+      }
+    }else {
+      document.getElementById("loginstatusID").style.display = "none";
+      document.getElementById("loginformID").style.display = "none";
+      document.cookie = "chattoken= "+login_authenticate.default.accessToken+"";
+      document.cookie = "chatrefreshtoken="+login_authenticate.default.refreshToken+"";
+      userid = login_authenticate.default.userid;
+      inituserData();
+    }
+  }
+
+  async function getChatToken(){
+    return new Promise(function(resolve, reject) {
+      var cookie = document.cookie;
+      cookie.split(";").forEach((item, i) => {
+        var n = item.indexOf("chattoken");
+        if(n>=0){
+          resolve(  item.split("=")[1]);
+        }
+      });
+      resolve ("");
+    });
+  }
+
+  class chatService{
+    constructor(){
+      this.isstart = false;
+      this.timeout = 1000;
+    }
+
+    async chatService(chatroom, conversation_){
+      var token = await getChatToken();
+      while (true) {
+        this.isstart = true;
+        //send conversation:
+        conversation_.forEach(async (item, i) => {
+          if(item.chatroom){
+            if(!item.sended){
+              try {
+                if(item.chatroom.type.localeCompare("group")==0){
+                  sendMessagetoGroup(conversation_[i], token);
+                  //item.success = res;
+                }else if(item.chatroom.type.localeCompare("friend")==0){
+                  await  sendMessagetoFriend(item, token);
+                }
+                conversation_[i].sendingcount +=1;
+                item.sended = true;
+                console.log("item:",item);
+              } catch (e) {
+                console.log(e);
+              } finally {
+
+              }
+            }
+          }
+        });
+
+        //update chatbox
+        if(chatroom.type.localeCompare("group")==0){
+          loadGroupConversation(chatroom.id);
+        }else {
+          loadFriendConversation(chatroom.id);
+        }
+        // check server has response new message
+        await sleep(800);
+      }
+    }
+  }
+
+  var currchatroom = {type: "unset", id: -1},
+  conversation = [],
+  groupchat_list,
+  friendchat_list,
+  user_isscrollchatbox=false,
+  id_chatitem_selected;
+  chatService_ = new chatService();
+  async  function inituserData() {
+    var token = await getChatToken();
+    friendchat_list = JSON.parse(await getFriendlist(token));
+    initFriendList(friendchat_list);
+    groupchat_list = JSON.parse(await getGroup_chat(token));
+    initGroupchatList(groupchat_list);
+  }
+
+  function initFriendList(friendchat_list){
+    var friendlistItems ="";
+    friendchat_list.forEach((item, i) => {
+      friendlistItems+=
+      "<div id='frienditemID"+item.userid+"' class='frienditem'  onmouseup='itemMouseup(this.id)' onmouseout='itemMouseout(this.id)' onmousemove='itemMousemove(this.id)' onmousedown='itemMousedown(this.id)'  onclick='selectchatroom_friend(this.id)'>"
+      +"<div class='onlinestatus' style='background-color:"+(item.loggin?"#E30003":"#cc0000")+";'>"
+      +"</div>"
+      +"<div class='icon'>"
+      +"</div>"
+      +"<div id='friendnameID"+item.userid+"' class='username'> "+item.username
+      +"</div>"
+      +"</div>"
+    });
+    document.getElementById("friendlistID").innerHTML = friendlistItems;
+  }
+
+  function initGroupchatList(groupchat_list){
+    var yourgroup = document.getElementById("yourgroupID");
+    yourgroup.innerHTML="";
+    if(groupchat_list)
+    groupchat_list.forEach((item, i) => {
+      const groupitem = document.createElement("div");
+      groupitem.classList.add("groupitem");
+      groupitem.id = "groupitemID"+item.id_group;
+      groupitem.addEventListener("mouseup", function (){ id_chatitem_selected = this.id;});
+      groupitem.addEventListener("mouseout", function (){
+        if(this.id.localeCompare(id_chatitem_selected)!=0){
+          document.getElementById(this.id).style.backgroundColor = "";
+        }
+      });
+      groupitem.addEventListener("mousemove", function (){
+        if(this.id.localeCompare(id_chatitem_selected)!=0){
+          document.getElementById(this.id).style.backgroundColor = "#EDEDED";
+        }
+      });
+      groupitem.addEventListener("mousedown", function (){
+        document.getElementById(this.id).style.backgroundColor = "#DBDBDB";
+      });
+      groupitem.addEventListener("click", function (){
+        groupChat_hightlight(this.id);
+        var groupID = this.id.substring(11);
+        currchatroom.type = "group";
+        currchatroom.id = groupID;
+        // loadMember(id);
+        loadGroupchatbox(groupID);
+        loadGroupConversation(groupID);
+      });
+      const onlinestatus = document.createElement("div");
+      onlinestatus.classList.add("onlinestatus");
+      const groupiconparent = document.createElement("div");
+      groupiconparent.classList.add("groupicon");
+      const groupicon1 = document.createElement("div");
+      groupicon1.classList.add("groupicon");
+      const groupicon2 = document.createElement("div");
+      groupicon2.classList.add("groupicon");
+      const groupicon3 = document.createElement("div");
+      groupicon3.classList.add("groupicon");
+      const groupitemname = document.createElement("div");
+      groupitemname.classList.add("groupitemname");
+      const groupname = document.createElement("div");
+      groupname.classList.add("groupname");
+      groupname.id = "groupnameID"+item.id_group;
+      groupname.innerHTML = item.group_name;
+      groupiconparent.appendChild(groupicon1);
+      groupiconparent.appendChild(groupicon2);
+      groupiconparent.appendChild(groupicon3);
+      groupitemname.appendChild(groupname);
+      groupitem.appendChild(onlinestatus);
+      groupitem.appendChild(groupiconparent);
+      groupitem.appendChild(groupitemname);
+      yourgroup.appendChild(groupitem);
+    });
+  }
+
+  function cancel(){
+    document.getElementById("loginformID").style.display = "none";
+  }
+
+  function selectchatroom_group(groupid){
+    groupChat_hightlight(groupid);
+    var groupID = groupid.substring(11);
+    currchatroom.type = "group";
+    currchatroom.id = groupID;
+    // loadMember(id);
+    loadGroupchatbox(groupID);
+    loadGroupConversation(groupID);
+  }
+
+  async function loadGroupchatbox(groupID){
+    var token = await getChatToken();
+    var group = JSON.parse(await getGroupInfomation(groupID, token));
+    if(group){
+      var creator = group[0].creator, group_name = group[0].group_name, id_group = group[0].id_group;
+      document.getElementById("chatboxnameID").innerHTML=group_name;
+      var memberList = document.getElementById("memberID");
+      memberList.innerHTML="";
+      group.forEach((item, i) => {
+        const memberitem = document.createElement("div");
+        memberitem.classList.add("memberitem");
+        memberitem.id = "memberitemID"+item.userid;
+        const onlinestatus = document.createElement("div");
+        onlinestatus.classList.add("onlinestatus");
+        const icon = document.createElement("div");
+        icon.classList.add("icon");
+        const username = document.createElement("div");
+        username.classList.add("username");
+        username.innerHTML = item.username;
+        memberitem.appendChild(onlinestatus);
+        memberitem.appendChild(icon);
+        memberitem.appendChild(username);
+        if (creator ==yourID) {
+          const removemember = document.createElement("div");
+          removemember.classList.add("removemember");
+          removemember.id = "removememberitemID"+item.userid;
+          removemember.innerHTML =  "&times;</div>";
+          memberitem.appendChild(removemember);
+        }
+        memberList.appendChild(memberitem);
+
+      });
+
+      if (creator ==(yourID)) {
+        const memberitem = document.createElement("div");
+        memberitem.classList.add("memberitem");
+        const memberinvite = document.createElement("div");
+        memberinvite.classList.add("memberinvite");
+        memberinvite.innerHTML = "invite friend";
+        memberitem.appendChild(memberinvite);
+        memberList.appendChild(memberitem);
+      }
+    }
+  }
+
+  var lastCountgroupConversation = 0;
+  async function loadGroupConversation(groupID){
+    var token = await getChatToken();
+    var groupConversation = JSON.parse(await getGroupConversation(groupID, token));
+    var messageItem="";
+    document.getElementById("messageboxID").innerHTML = "";
+    if(groupConversation)
+    groupConversation.forEach((item, i) => {
+      // console.log("item: ",item);
+      const messageitem = document.createElement("div");
+      messageitem.classList.add("messageitem");
+      const messageitem_icon = document.createElement("div");
+      messageitem_icon.classList.add("messageitem_icon");
+      const _chatboxmessagae = document.createElement("div");
+      _chatboxmessagae.classList.add( yourID == item.sender?"userchatboxmessagae":"guestchatboxmessagae");
+      const hidemessageinfo= document.createElement("div");
+      hidemessageinfo.classList.add("hidemessageinfo");
+      hidemessageinfo.innerHTML = "send: "+item.datetime_send.slice(0, 19).replace('T', ' ');
+      hidemessageinfo.id = "messageinfoID" + item.id_message;
+      const messgetext= document.createElement("div");
+      messgetext.classList.add("messgetext");
+      messgetext.id = "message_dataID" + item.id_message;
+      messgetext.addEventListener("click", function() {
+        // show info text
+        // var id = message_dataID.substring(14);
+        // var infoID = "messageinfoID"+id ;
+        // var classname = document.getElementById(infoID).className;
+        // if (classname.localeCompare("hidemessageinfo")==0) {
+        //   document.getElementById(infoID).className = "messageinfo";
+        // }else if (classname.localeCompare("messageinfo")==0) {
+        //   document.getElementById(infoID).className = "hidemessageinfo";
+        // }
+      });
+      messgetext.innerHTML = item.message_data;
+      messageitem.appendChild(messageitem_icon);
+      messageitem.appendChild(_chatboxmessagae);
+      _chatboxmessagae.appendChild(hidemessageinfo);
+      _chatboxmessagae.appendChild(messgetext);
+      document.getElementById("messageboxID").prepend(messageitem);
+    });
+    if (lastCountgroupConversation<groupConversation.length&&!user_isscrollchatbox) {
+      refreshchatbox();
+      console.log("refreshchatbox");
+      lastCountgroupConversation = groupConversation.length;
+    }
+  }
+
+
+
+  function selectchatroom_friend(friendid){
+    friendChat_hightlight(friendid);
+    // loadMember(id);
+    var friendID = friendid.substring(12);
+    currchatroom.type = "friend";
+    currchatroom.id = friendid;
+    loadFriendConversation(friendID);
+  }
+
+
+  async function loadFriendConversation(friendID){
+    var token = await getChatToken();
+    // var converstation = JSON.parse(await getGroupConversation(groupID, token));
+    // var messageItem="";
+    // if(converstation)
+    // converstation.forEach((item, i) => {
+    //   messageItem+="<div class='messageitem'>"
+    //   +"<div class='messageitem_icon'>"
+    //   +"</div>"
+    //   +"<div class='"+( yourID == item.sender?"userchatboxmessagae":"guestchatboxmessagae")+"'>"+item.message_data+"</div>"
+    //   +"</div>"
+    // });
+    // document.getElementById("messageboxID").innerHTML = messageItem;
+  }
+
+  var chat_cache = "";
+  function typingbox_handle(e) {
+    if(e.keyCode === 13){
+      e.preventDefault(); // Ensure it is only this code that runs
+      sendMessage();
+    }
+  }
+
+  function sendMessage(){
+    var typingbox = document.getElementById("typingboxID");
+    var mess = typingbox.value;
+    if(mess.localeCompare("")==0)return;
+    temporaryClientShowMessage(mess);
+    var post_data = {
+      "chatroom": currchatroom,
+      "message": mess,
+      "datetimesend" :new Date().toISOString().slice(0, 19).replace('T', ' ') ,
+      "sended": false,
+      "success": false,
+      "sendingcount": 0,
+      "resID":-1
+    };
+
+    putto_conversation_sender(post_data);
+    refreshchatbox();
+    document.getElementById("typingboxID").value = "";
+  }
+
+  Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+      what = a[--L];
+      while ((ax = this.indexOf(what)) !== -1) {
+        this.splice(ax, 1);
+      }
+    }
+    return this;
+  };
+
+  // var ary = ['three', 'seven', 'eleven'];
+  //
+  // ary.remove('seven');
+  function putto_conversation_sender(post_data){
+    conversation.push(post_data);
+  }
+
+  function temporaryClientShowMessage(mess){
+    const messageitem = document.createElement("div");
+    messageitem.classList.add("messageitem");
+    const messageitem_icon = document.createElement("div");
+    messageitem_icon.classList.add("messageitem_icon");
+    const userchatboxmessagae = document.createElement("div");
+    userchatboxmessagae.classList.add("userchatboxmessagae");
+    userchatboxmessagae.innerHTML = mess;
+    messageitem.appendChild(messageitem_icon);
+    messageitem.appendChild(userchatboxmessagae);
+    document.getElementById("messageboxID").appendChild(messageitem);
+  }
+
+  function refreshchatbox(){
+    var height = document.getElementById("messageboxID").scrollHeight;
+    document.getElementById("messageboxID").scrollTop = height;
+    user_isscrollchatbox =false;
+  }
+
+  function auto_grow(element) {
+    element.style.height = "20px";
+    element.style.height = (element.scrollHeight-8)+"px";
+  }
+
+  function seruser_isscrollboxtrue(){
+    // scroll is max position
+    var limit =window.scrollMaxY || document.getElementById("messageboxID").scrollHeight - document.getElementById("messageboxID").clientHeight;
+    if (document.getElementById("messageboxID").scrollTop == limit) {
+      user_isscrollchatbox =false;
+      return;
+    }
+    user_isscrollchatbox =true;
+  }
+
+  function startChatservice(){
+    console.log(conversation, chatService_.isstart);
+    if(!chatService_.isstart){
+      chatService_.chatService(currchatroom, conversation);
+    }
+  }
+
+  window.onload = async (event) => {
+    var token = await getChatToken();
+    user =JSON.parse( getCurrentUsersession(token));
+    startChatservice();
+    if(user.availble){
+      // console.log("user: "+ user.availble);
+      // console.log("user: "+ user.session);
+      yourID = user.session;
+      document.getElementById("loginformID").style.display = "none";
+      document.getElementById("logout_buttonID").style.display = "";
+      document.getElementById("login_buttonID").style.display = "none";
+
+      inituserData();
+    }else {
+      document.getElementById("loginformID").style.display = "block";
+      document.getElementById("logout_buttonID").style.display = "none";
+      document.getElementById("login_buttonID").style.display = "";
+    }
+  };
+
+  // home puple box
+  var show = false;
+  function showtoolbar(){
+    if(pressandmove)return ;
+    if(show){
+      document.getElementById("toolbarID").className = "toolbar";
+    }else {
+      document.getElementById("toolbarID").className = "hidetoolbar";
+    }
+    show = !show;
+  }
+
+  var leftMouseButtonOnlyDown;
+  var pressandmove = false;
+  function setLeftButtonState_onmousemove(e) {
+    leftMouseButtonOnlyDown = e.buttons === undefined
+    ? e.which === 1
+    : e.buttons === 1;
+    pressandmove = true;
+  }
+
+  function setLeftButtonState_onmousedown(e) {
+    leftMouseButtonOnlyDown = e.buttons === undefined
+    ? e.which === 1
+    : e.buttons === 1;
+    pressandmove = false;
+  }
+
+  function setLeftButtonState_onmouseup(e) {
+    leftMouseButtonOnlyDown = e.buttons === undefined
+    ? e.which === 1
+    : e.buttons === 1;
+    move=false;
+  }
+
+  document.body.onmousedown = setLeftButtonState_onmousedown;
+  document.body.onmousemove = setLeftButtonState_onmousemove;
+  document.body.onmouseup = setLeftButtonState_onmouseup;
+
+  var boxsize=50;
+  var boxcenter = boxsize/2;
+  var move = false;
+  var moving = false;
+  var posX = 0, posY = 0;
+  document.addEventListener('mousemove', async function(e) {
+    if (leftMouseButtonOnlyDown) {
+      var x = e.clientX, y = e.clientY,
+      elementMouseIsOver = document.elementFromPoint(x, y);
+      if (elementMouseIsOver)
+      if(elementMouseIsOver.id.localeCompare('pupleID')==0){// catch img
+        move = true;
+      }
+      if(move){
+        posX = x-boxcenter, posY = y-boxcenter;
+        if(x-boxcenter<0){
+          posX = 0 ;
+        }else if(x+boxcenter>document.documentElement.clientWidth){
+          posX = (document.documentElement.clientWidth-boxsize);
+        }
+        if(y-boxcenter <0){
+          posY = 0 ;
+        } else if(y +boxcenter>document.documentElement.clientHeight){
+          posY = (document.documentElement.clientHeight-boxsize) ;
+        }
+
+        //   var box = document.getElementById("pupleboxID");
+        // box.style.left = posX+"px";
+        // box.style.top = posY+"px";
+        if(!moving){
+          moveTo();
+        }
+        else {
+          while (moving) {
+            await sleep(10);
+          }
+          moveTo();
+        }
+      }
+    }
+  });
+
+  async function moveTo() {
+    var box = document.getElementById("pupleboxID");
+    var currX = box.getBoundingClientRect().x;
+    var currY = box.getBoundingClientRect().y;
+    var Dx =  posX - currX;
+    var Dy =  posY - currY;
+    var basicHandSpeed = 3;
+    var Dx_ = 0, Dy_= 0, stepx = Dx /basicHandSpeed, stepy =Dy /basicHandSpeed;
+    for (var i = 0; i < basicHandSpeed; i++) {
+      moving = true;
+      Dx_ += stepx;
+      Dy_ += stepy;
+      box.style.left = (currX+Dx_)+"px";
+      box.style.top = (currY+Dy_)+"px";
+      await sleep(5);
+    }
+    moving = false;
+  }
+  // script mouse layout
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function itemMouseup(id){
+    id_chatitem_selected = id;
+  }
+  function itemMouseout(id){
+    if(id.localeCompare(id_chatitem_selected)!=0){
+      document.getElementById(id).style.backgroundColor = "";
+    }
+  }
+  function itemMousemove(id){
+    if(id.localeCompare(id_chatitem_selected)!=0){
+      document.getElementById(id).style.backgroundColor = "#EDEDED";
+    }
+  }
+  function itemMousedown(id){
+    document.getElementById(id).style.backgroundColor = "#DBDBDB";
+  }
+  function groupChat_hightlight(groupID){
+    var id = groupID.substring(11);
+    if(groupchat_list)
+    groupchat_list.forEach((item, i) => {
+      if(item.id_group==parseInt(id)){
+        document.getElementById(groupID).style.backgroundColor = "#daf2ef";
+      }else {
+        document.getElementById("groupitemID"+item.id_group).style.backgroundColor = "";
+      }
+    });
+  }
+  function friendChat_hightlight(frienditemID){
+    var id = frienditemID.substring(12);
+    if(friendchat_list)
+    friendchat_list.forEach((item, i) => {
+      if(item.userid==parseInt(id)){
+        document.getElementById(frienditemID).style.backgroundColor = "#daf2ef";
+      }else {
+        document.getElementById("frienditemID"+item.userid).style.backgroundColor = "";
+      }
+    });
+  }
+</script>
+
+</html>

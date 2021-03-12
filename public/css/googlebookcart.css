@@ -55,6 +55,18 @@
 	order: 2;
 	line-height: 25px;
 }
+.bookcart-header .bookcartClose .closeCart {
+	color: #FF5154;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.bookcart-header .bookcartClose .closeCart:hover,
+.closeCart:focus {
+  color: #FF8D8E;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 
 /* The Close Button */
@@ -71,6 +83,10 @@
   text-decoration: none;
   cursor: pointer;
 }
+#bookcartID .bookcart-content #listCartitem {
+	display: block;
+}
+
 
 
 .bookcart-item {
@@ -143,7 +159,7 @@
 	display: flex;
 	margin-top: 5px;
 	margin-left: 5px;
-	margin-bottom: 5px;
+	margin-bottom: 6px;
 }
 .bookcart-item-description .price .discount {
 	color: #952020;
@@ -215,6 +231,34 @@
 	background: #FFE26D;
 	cursor: pointer;
 }
+
+.bookcart-content .totalPrice {
+	display: flex;
+	padding-top: 15px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	font-size: 17px;
+	font-weight: 700;
+	margin-left: 28px;
+	border-top: 1px solid #E0E0E0;
+}
+.bookcart-content .totalPrice .totalPriceLabel {
+	margin-right: 5px;
+	color: #7E7E7E;
+	font-weight: 500;
+}
+
+.totalPrice .totalItem  {
+	margin-right: 12px;
+	color: #E80003;
+}
+.totalPrice .price  {
+	margin-right: 24px;
+	color: #E80003;
+}
+
+
+
 #bookcartID .bookcart-content .bookcart-control {
 	display: flex;
 	margin-bottom: 5px;

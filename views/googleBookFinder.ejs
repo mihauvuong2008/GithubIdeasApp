@@ -55,6 +55,9 @@
             <div class="shortDescchild" id="pageCountshortDesc">
               some text some text some text some text some text
             </div>
+            <div class="shortDesclanguage" id="languageshortDesc">
+						  priceDesc priceDesc priceDesc priceDesc
+					  </div>
             <div class="shortDescchild" id="priceshortDesc">
               some text some text some text some text some text
             </div>
@@ -294,7 +297,7 @@
           Book cart title here
         </div>
         <div class="bookcartClose">
-          <span class="close" onclick="closeBookcart()">&times;</span>
+          <span class="closeCart close" onclick="closeBookcart()">&times;</span>
         </div>
       </div>
       <div id="listCartitem">
@@ -383,6 +386,13 @@
 
       </div>
 
+
+      <div class="totalPrice">
+        <div class="totalPriceLabel">Total:</div>
+        <div id="totalItemID" class="totalItem">10 item</div>
+        <div class="totalPriceLabel">Price:</div>
+        <div id="priceID" class="price">1.500.000d</div>
+      </div>
       <div class="bookcart-control">
         <div class="bookcar-pay" onclick="payTitle()"> PAY </div>
         <div class="bookcar-close" onclick="closeBookcart()">Close</div>
@@ -391,6 +401,7 @@
   </div>
 </body>
 <script>
+
 function expand(clicked_id)
 {
   var ID_Selected = clicked_id.substring(10);
@@ -402,7 +413,7 @@ function expand(clicked_id)
     item.style.flexWrap = "wrap";
   }else {
     console.log("no expand_");
-    item.style.overflow ="auto";
+    item.style.display ="inherit";
     item.style.flexWrap = "nowrap";
   }
 }
@@ -430,7 +441,7 @@ function  searchBook(){
   bookdata.items.forEach((item, i) => {
     var Price = ( item.saleInfo===undefined?"": item.saleInfo.saleability );
     volumes += "<div id='"+ item.id +"' class='volumeItem' onclick='showDesc(this.id)' >"+
-    "<div class='volumeImg'> <img src='"+ (item.volumeInfo.imageLinks===undefined?"":item.volumeInfo.imageLinks.smallThumbnail)  +"' alt=''/> </div>"+
+    "<div class='volumeImg'> <img src='"+ (item.volumeInfo.imageLinks===undefined?"":item.volumeInfo.imageLinks.thumbnail)  +"' alt=''/> </div>"+
     "<div class='volumeInfo'>"+
     "<div class='volumeTitle'> "+ item.volumeInfo.title + " </div>" +
     "<div class='volumeAuthors'>"+ item.volumeInfo.authors+ " </div>" +
@@ -469,11 +480,15 @@ async function showDesc(id){
 
   if(selectedVolume===undefined) return;
 
-  if(selectedVolume.volumeInfo.authors!==undefined)
-  document.getElementById("authorsshortDesc").innerHTML=JSON.stringify(selectedVolume.volumeInfo.authors);
+  if(selectedVolume.volumeInfo.authors!==undefined){
+    document.getElementById("authorsshortDesc").innerHTML=JSON.stringify(selectedVolume.volumeInfo.authors);
+  }else {
+    document.getElementById("authorsshortDesc").innerHTML="undefined";
+  }
   document.getElementById("publishershortDesc").innerHTML=selectedVolume.volumeInfo.publisher;
   document.getElementById("publishedDateshortDesc").innerHTML="Published date: "+selectedVolume.volumeInfo.publishedDate;
   document.getElementById("pageCountshortDesc").innerHTML= "Page count: "+selectedVolume.volumeInfo.pageCount;
+  document.getElementById("languageshortDesc").innerHTML="Language: "+selectedVolume.volumeInfo.language;
   document.getElementById("priceshortDesc").innerHTML=selectedVolume.saleInfo.saleability;
   //=============
   document.getElementById("titleBook").innerHTML=selectedVolume.volumeInfo.title;
@@ -519,12 +534,18 @@ async function showDesc(id){
 //=========================================
 
 function prevVolume(){
+  if(listbookdata===undefined)return ;
+  if (listbookdata[listbookdataIdx]===undefined) return;
+  if(volumesIdx < listbookdata[listbookdataIdx].items===undefined)return;
   if (volumesIdx>0) {
     showDesc(listbookdata[listbookdataIdx].items[volumesIdx-1].id);
   }
 }
 
 function nextVolume(){
+  if(listbookdata===undefined)return ;
+  if (listbookdata[listbookdataIdx]===undefined) return;
+  if(volumesIdx < listbookdata[listbookdataIdx].items===undefined)return;
   if(volumesIdx < listbookdata[listbookdataIdx].items.length-1){
     showDesc(listbookdata[listbookdataIdx].items[volumesIdx+1].id);
   }
@@ -568,17 +589,18 @@ async function continueScroll(){
     len = D;
     for (var i = 0; i < len; i+=2) {
       document.getElementById(ID_Selected).scrollLeft -=(len -i)/10;
-      await sleep(5);
+      await sleep(15);
     }
   }else {
     len = (-1*D);
     for (var i = 0; i < len; i+=2) {
       document.getElementById(ID_Selected).scrollLeft += (len -i)/10;
-      await sleep(5);
+      await sleep(15);
     }
   }
   D =0;
 }
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -616,11 +638,17 @@ async function loadCartContent() {
     var cartData = await loadAllData();
     var cartContent = "";
 
-  console.log("cartData:", cartData);
+    var totalItem = 0;
+    var totalPrice = 0;
+    console.log("cartData:", cartData);
     await cartData.forEach((item, i) => {
+      if(item.selected){
+        totalItem+=item.quantily;
+        totalPrice+=( item.quantily*parseInt(item.price));
+      }
       cartContent+="<div id = 'bookcart-item"+item.id+"' class='bookcart-item'>"
       +"<div class='bookpay-selector'>"
-      +"<input id = 'bookcart-item"+item.id+"' type='checkbox' class='slector'>"
+      +"<input id = 'selected-item" + item.id + "' type='checkbox' class='slector' onclick='selectCartItem(this.id)' "+ (item.selected?"checked":"")+">"
       +"</div>"
       +"<div class='bookcart-item-thumbnail'>"
       +"<img src='"+item.volumeData.volumeInfo.imageLinks.smallThumbnail+"' width='183' height='275' alt=''/>"
@@ -638,11 +666,11 @@ async function loadCartContent() {
       +"</div>"
       +"<div class='item-quantily-voucher'>"
       +"<div class='item-quantily'>"
-      +"<div class='quantily-control quantily-down'>-"
+      +"<div  id = 'quantilydown-item"+item.id+"' class='quantily-control quantily-down' onclick='quantilydownCartItem(this.id)'>-"
       +"</div>"
       +"<div class='quantily'>" + item.quantily
       +"</div>"
-      +"<div class='quantily-control quantily-up'>+"
+      +"<div id = 'quantilyup-item"+item.id+"' class='quantily-control quantily-up' onclick='quantilyupCartItem(this.id)'>+"
       +"</div>"
       +"</div>"
       +"<div class='item-voucher'> use voucher!"
@@ -650,13 +678,14 @@ async function loadCartContent() {
       +"</div>"
       +"</div>"
       +"<div class='bookcart-item-remove'>"
-      +"<span  id = 'bookcart-item"+item.id+"' onclick='removeBookCartItem(this.id)' class='close'>&times;</span>"
+      +"<span  id = 'remove-item"+item.id+"' onclick='removeBookCartItem(this.id)' class='close'>&times;</span>"
       +"</div>"
       +"</div>"
       +"</div>"
-
     });
   document.getElementById("listCartitem").innerHTML = cartContent;
+document.getElementById("totalItemID").innerHTML = (totalItem + " item");
+document.getElementById("priceID").innerHTML = (totalPrice + " d");
 
 }
 
@@ -665,7 +694,7 @@ function closeBookcart(){
 }
 
 function removeBookCartItem(id){
-  volumeCart_idxDB_removeData(id.substring(13));
+  volumeCart_idxDB_removeData(id.substring(11));
   loadCartContent();
 }
 
@@ -673,12 +702,35 @@ function addToCard(){
   if(selectedVolumeID==undefined)return;
   // set user infor discount here
   var discount = "200.000"
+  var price = "500000"
   // default = 1
   var quantily = 1;
   // set voucherID here
   var voucherID = "1";
-  var volumeitemData = new volumeData(selectedVolume, discount, quantily, voucherID);
+  // default = false
+  var selected = false;
+  var volumeitemData = new volumeData(selectedVolume, discount, price, quantily, voucherID, selected);
   volumeCart_idxDB_addData(volumeitemData);
+}
+
+async function selectCartItem(item_id) {
+  var volumeCart_ID = item_id.substring(13);
+  var selectedValue = document.getElementById(item_id).checked;
+  await   volumeCart_selectItem(volumeCart_ID, selectedValue  );
+    await   loadCartContent();
+}
+
+async function quantilyupCartItem(item_id) {
+  var volumeCart_ID = item_id.substring(15);
+  await volumeCart_quantilyUp(volumeCart_ID);
+  await   loadCartContent();
+}
+
+async function quantilydownCartItem(item_id) {
+  var volumeCart_ID = item_id.substring(17);
+  await volumeCart_quantilyDown(volumeCart_ID);
+    await loadCartContent();
+
 }
 
 window.onclick = function(event) {

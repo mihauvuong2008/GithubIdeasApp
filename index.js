@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
+
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
@@ -49,8 +50,8 @@ app.get("/firstDBApp", (req,res)=>{
 
 app.get("/document",async (req,res)=>{
 
-    var pagemode = [{ mode: 'mode1', value: 'documentPage' }];
-    var var1 = 1;
+  var pagemode = [{ mode: 'mode1', value: 'documentPage' }];
+  var var1 = 1;
   // console.log("mode: ", pagemode[0].mode);
   var doc_data = await mysqlDBTool.loadall_docdatatable();
   // console.log("docdata: ", doc_data);
@@ -58,7 +59,7 @@ app.get("/document",async (req,res)=>{
     myvar: var1,
     mode: pagemode,
     docdata: doc_data
-    });
+  });
 });
 
 
@@ -116,6 +117,40 @@ app.get("/postImage_uploader", (req,res)=>{
 app.get("/googleBookFinder", (req,res)=>{
   res.render("googleBookFinder");
 });
+
+app.get("/chatapp", (req,res)=>{
+  res.render("chatapp");
+});
+
+
+
+
+app.post("/loginchecker2",  (req,res)=>{
+  // console.log("req: ????");
+  var form = new formidable.IncomingForm();
+  var check = false;
+  form.parse(req,async function (err, fields, files) {
+    if(fields!==undefined){
+      console.log("fields: ", fields);
+    }
+    console.log("files: ", files);
+    var username = fields.username;
+    var password = fields.password;
+    check = await mysqlDBTool.checklogin(username, password);
+    console.log(check);
+
+    if (check) {
+      res.json({ status: "ok" }) ;
+    }else {
+      res.json({ status: "login false 2" }) ;
+    }
+    //res.write('File uploaded and moved!');
+    res.status(200).end();
+  });
+});
+
+
+
 
 
 
@@ -178,6 +213,14 @@ saveDowntoMsqlDB  =(idData, titleData, htmlData)=>{
   }
 
 }
+
+// xac thuc nguoi dung: sau khi goi init, approuter se yeu cau xac thuc
+const initAPIs = require("./authenticate-user/authenuserAPI");
+// Cho phép các api của ứng dụng xử lý dữ liệu từ body của request
+app.use(express.json());
+// Khởi tạo các routes cho ứng dụng
+initAPIs(app);
+
 
 
 
