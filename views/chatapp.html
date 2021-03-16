@@ -9,14 +9,52 @@
 <body>
 <div class="chatpanel">
 <div id="pupleboxID" class="puplebox">
+	<div class="boxheader">
 	<div id="pupleID" class="puple"></div>
 	<div class="toolbar">
 	  <div class="user_name">your username</div>
 	  <div class="toolbarbutton logout_button">logout</div>
 	  <div class="toolbarbutton login_button">login</div>
+	  <div class="toolbarbutton addfriend">add friend</div>
 	  <div class="toolbarbutton newgroup">new group</div>
+	  <div class="toolbarbutton openstory">open story</div>
+    </div>
+	</div>
+	<div id="creategroupboxID" class="creategroupbox">
+	  <div class="newgroupinfo">
+		<textarea id="newgrouptext"></textarea>
+	  	<div class="createbutton">Create</div>
+	  </div>
+	  <div class="creategroup_friendlist">
+	    <div class="creategroup_friendlist_item">
+			<div class="friendlist_item_name">friend 1</div>
+		  	<input class="friendlist_item_checker" type="checkbox">
+	    </div>
+		  <div class="creategroup_friendlist_item">
+			<div class="friendlist_item_name">friend 1</div>
+		  	<input class="friendlist_item_checker" type="checkbox">
+	    </div>
+		  <div class="creategroup_friendlist_item">
+			<div class="friendlist_item_name">friend 1</div>
+		  	<input class="friendlist_item_checker" type="checkbox">
+	    </div>
+		  <div class="creategroup_friendlist_item">
+			<div class="friendlist_item_name">friend 1</div>
+		  	<input class="friendlist_item_checker" type="checkbox">
+	    </div>
+		  <div class="creategroup_friendlist_item">
+			<div class="friendlist_item_name">friend 1</div>
+		  	<input class="friendlist_item_checker" type="checkbox">
+	    </div>
+		  <div class="creategroup_friendlist_item">
+			<div class="friendlist_item_name">friend 1</div>
+		  	<input class="friendlist_item_checker" type="checkbox">
+	    </div>
+	  </div>
+		
     </div>
 </div>
+
 <div class="friendlist">
 	<div class="frienditem">
 	  <div class="onlinestatus"> 
@@ -25,6 +63,10 @@
 	  </div>
 	  <div class="username"> username
 	  </div>
+	  <div class="notice hidenotice">
+	    <div class="noticevalue">1
+		</div>
+	  </div>
     </div>
 	<div class="frienditem">
 	  <div class="onlinestatus"> 
@@ -33,6 +75,10 @@
 	  </div>
 	  <div class="username"> username
 	  </div>
+	  <div class="notice hidenotice">
+	    <div class="noticevalue">1
+		</div>
+	  </div>
     </div>
 	  <div class="frienditem">
 	  <div class="onlinestatus"> 
@@ -41,6 +87,10 @@
 		</div>
 	  <div class="username"> username
 		</div>
+	  <div class="notice hidenotice">
+	    <div class="noticevalue">1
+		</div>
+	  </div>
     </div>
 	  <div class="frienditem">
 	  <div class="onlinestatus"> 
@@ -49,6 +99,10 @@
 		</div>
 	  <div class="username"> username
 		</div>
+	  <div class="notice hidenotice">
+	    <div class="noticevalue">1
+		</div>
+	  </div>
     </div>
 	  
 	
@@ -66,6 +120,10 @@
 	  <div class="groupitemname">
 	    <div class="groupname">Content for  class "groupname" Goes Here</div>
 	  </div>
+	  <div class="notice hidenotice">
+	    <div class="noticevalue">1
+		</div>
+	  </div>
     </div>
 	<div class="groupitem">
 		<div class="onlinestatus"> 
@@ -79,18 +137,9 @@
 	  <div class="groupitemname">
 	    <div class="groupname">Content for  class "groupname" Goes Here</div>
 	  </div>
-    </div>
-	  <div class="groupitem">
-		<div class="onlinestatus"> 
+	  <div class="notice hidenotice">
+	    <div class="noticevalue">1
 		</div>
-	  <div class="groupicon">
-		<div class="groupicon"></div>
-		<div class="groupicon"></div>
-		<div class="groupicon"></div>
-      </div>
-    
-	  <div class="groupitemname">
-	    <div class="groupname">Content for  class "groupname" Goes Here</div>
 	  </div>
     </div>
 	  <div class="groupitem">
@@ -104,10 +153,243 @@
     
 	  <div class="groupitemname">
 	    <div class="groupname">Content for  class "groupname" Goes Here</div>
+	  </div>
+	  <div class="notice hidenotice">
+	    <div class="noticevalue">1
+		</div>
+	  </div>
+    </div>
+	  <div class="groupitem">
+		<div class="onlinestatus"> 
+		</div>
+	  <div class="groupicon">
+		<div class="groupicon"></div>
+		<div class="groupicon"></div>
+		<div class="groupicon"></div>
+      </div>
+	  <div class="groupitemname">
+	    <div class="groupname">Content for  class "groupname" Goes Here</div>
+	  </div>
+	  <div class="notice hidenotice">
+	    <div class="noticevalue">1
+		</div>
 	  </div>
     </div>
 	  
   </div>
+	
+  <div class="liststory">
+	<div class="story">
+	  <div class="storyheader">
+		  <div class="embroiderers">
+			<div class="embroiderer">
+			  <div class="embroiderer-icon">
+				</div>
+			  <div class="embroiderer_name"> username 1
+			  </div>
+			  <div class="kickout_vote"> &times;
+			  </div>
+			</div>
+			<div class="embroiderer">
+			  <div class="embroiderer-icon">
+			  </div>
+			  <div class="embroiderer_name"> username 2
+			  </div>
+			  <div class="kickout_vote"> &times;
+			  </div>
+		   </div>
+			<div class="embroiderer">
+			  <div class="embroiderer-icon">
+			  </div>
+			  <div class="embroiderer_name"> username 3
+			  </div>
+			  <div class="kickout_vote"> &times;
+			  </div>
+		   </div>
+			  <div class="embroiderer">
+			  <div class="embroiderer-icon">
+			  </div>
+			  <div class="embroiderer_name"> username 3
+			  </div>
+			  <div class="kickout_vote"> &times;
+			  </div>
+		   </div>
+		  </div>
+		  <div class="hand">
+			  <div class="touchstory">
+				  <div class="touchitem">
+					<div class="join">join 
+                  	</div>
+				  	<div class="verify">
+					</div>
+				  </div>
+				  <div class="touchitem">
+					<div class="follow">follow 
+					</div>
+					<div class="verify">
+			    	</div>
+				  </div>
+				  	<div class="touchitem">
+					<div class="dontcare">dontcare
+				  </div>
+				  	<div class="verify">
+				  	</div>
+				  </div>
+			  </div>
+	      </div>
+	  </div>
+	  <div class="tell_story">
+		<div class="story_part">
+		  <div class="whatsay "> story part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Here</div>
+		  <div class="story_part_des">
+			<div class="whosay temphidden">	who say</div>
+		  	<div class="whensay temphidden">whensay</div>
+		  	<div class="wheresay temphidden">wheresay</div>
+		  	<div class="howsay temphidden">howsay</div>
+		  </div>
+        </div>
+      </div>
+	  <div class="comment_story">
+	    <div class="comment_item">
+			<div class="commentuser">
+			  <div class="commentuser-icon">
+			  </div>
+			  <div class="commentuser_name">commentuser name</div>
+			</div>
+		  <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+        </div>
+		  <div class="comment_item">
+			<div class="commentuser">
+			  <div class="commentuser-icon">
+			  </div>
+			  <div class="commentuser_name">commentuser name</div>
+			</div>
+		  <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+        </div>
+		  <div class="comment_item">
+			<div class="commentuser">
+			  <div class="commentuser-icon">
+			  </div>
+			  <div class="commentuser_name">commentuser name</div>
+			</div>
+		  <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+        </div>
+	    <div class="viewmorecomment">
+		  <div class="viewmorecommentitem">view more comment...</div>
+        </div>
+      </div>
+	<div class="typingbox_comment ">
+		<textarea class="typingbox_comment_text" type="text"></textarea>
+	  <div class="comment_sendbutton">send</div>
+    </div>
+    </div>
+	  <div class="story">
+	    <div class="storyheader">
+		  <div class="embroiderers">
+			<div class="embroiderer">
+			  <div class="embroiderer-icon">
+			  </div>
+			  <div class="embroiderer_name"> username 1
+			  </div>
+			  <div class="kickout_vote"> &times;
+			  </div>
+			</div>
+			<div class="embroiderer">
+			  <div class="embroiderer-icon">
+			  </div>
+			  <div class="embroiderer_name"> username 2
+			  </div>
+			  <div class="kickout_vote"> &times;
+			  </div>
+		   </div>
+			<div class="embroiderer">
+			  <div class="embroiderer-icon">
+			  </div>
+			  <div class="embroiderer_name"> username 3
+			  </div>
+			  <div class="kickout_vote"> &times;
+			  </div>
+		   </div>
+		  </div>
+		  <div class="hand">
+			  <div class="touchstory">
+				  <div class="touchitem">
+					<div class="join">join 
+                  	</div>
+				  	<div class="verify">
+					</div>
+				  </div>
+				  <div class="touchitem">
+					<div class="follow">follow 
+					</div>
+					<div class="verify">
+			    	</div>
+				  </div>
+				  	<div class="touchitem">
+					<div class="dontcare">dontcare
+				  </div>
+				  	<div class="verify">
+				  	</div>
+				  </div>
+			  </div>
+	      </div>
+		</div>
+		<div class="tell_story">
+			<div class="story_part">
+		  <div class="whatsay "> story part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Here</div>
+		  <div class="story_part_des">
+			<div class="whosay temphidden">	who say</div>
+		  	<div class="whensay temphidden">whensay</div>
+		  	<div class="wheresay temphidden">wheresay</div>
+		  	<div class="howsay temphidden">howsay</div>
+		  </div>
+        </div>
+		  <div class="story_part">
+		  <div class="whatsay "> story part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Here</div>
+		  <div class="story_part_des">
+			<div class="whosay temphidden">	who say</div>
+		  	<div class="whensay temphidden">whensay</div>
+		  	<div class="wheresay temphidden">wheresay</div>
+		  	<div class="howsay temphidden">howsay</div>
+		  </div>
+        </div>
+      </div>
+	  <div class="comment_story">
+<div class="comment_item">
+			<div class="commentuser">
+			  <div class="commentuser-icon">
+			  </div>
+			  <div class="commentuser_name">commentuser name</div>
+			</div>
+		  <div class="comment_content">Content for  class "comment_content" Goes HereContent for  class "comment_content" Goes HereContent for  class "comment_content" Goes HereContent for  class "comment_content" Goes Here</div>
+        </div>
+		  <div class="comment_item">
+			<div class="commentuser">
+			  <div class="commentuser-icon">
+			  </div>
+			  <div class="commentuser_name">commentuser name</div>
+			</div>
+		  <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+        </div>
+		  <div class="comment_item">
+			<div class="commentuser">
+			  <div class="commentuser-icon">
+			  </div>
+			  <div class="commentuser_name">commentuser name</div>
+			</div>
+		  <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+        </div>
+	    <div class="viewmorecomment">view more comment...
+		</div>
+      </div>
+		  
+		<div class="typingbox_comment ">
+		  <textarea class="typingbox_comment_text" type="text"></textarea>
+		  <div class="comment_sendbutton">send</div>
+		</div>
+    </div>
+  </div>
+
   <div class="chatboxbean">
     <div class="chatbox">
 	  
@@ -119,10 +401,12 @@
 		<div class="messageitem">
 			<div class="messageitem_icon">
 			</div>
-  		  <div class="userchatboxmessagae">
-			<div class="messageinfo">info message here</div>
-		    <div class="messgetext">4Content for  class "messgetext" Goes Here</div>
-          </div>
+			  <div class="userchatboxmessagae">
+				<div class="messageinfo">info message here</div>
+				<div>
+					<div class="messgetext">4Content for  class "messgetext" Goes Here</div>
+				</div>  
+			</div>
 		</div>
 		
 		
@@ -131,7 +415,10 @@
 		  </div>
   		  <div class="guestchatboxmessagae">
 			<div class="messageinfo">info message here</div>
-		    <div class="messgetext">3Content for  class "messgetext" Goes Here</div>
+		    <div>
+			  <div class="messgetext msgguest">3Content for  class "messgetext" Goes Here</div>
+			</div>
+			  
           </div>
 		</div>
 		<div class="messageitem">
@@ -139,7 +426,9 @@
 			</div>
   		  <div class="userchatboxmessagae">
 			<div class="messageinfo">info message here</div>
-		    <div class="messgetext">2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here</div>
+				<div>
+					<div class="messgetext msguser">2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here</div>
+				</div>
           </div>
 		</div>
 		<div class="messageitem">
@@ -147,7 +436,9 @@
 			</div>
   		  <div class="guestchatboxmessagae">
 			<div class="messageinfo">info message here</div>
-		    <div class="messgetext">1Content for  class "messgetext" Goes Here</div>
+				<div>
+		    		<div class="messgetext">1Content for  class "messgetext" Goes Here</div>
+				</div>
           </div>
 		</div>
 		

@@ -1,27 +1,96 @@
-async function sendMessagetoGroup(item, token){
-  var data = {"groupid": item.chatroom.id, "message": item.message, "datetime_send": item.datetimesend}
-  var res = await postMessagetoGroup(data , token);
+async function setitem_readedMessage_Group(item, datetime_read, token){
+  var data = {"readerid": "token", "unhide_usermindid": item.unhide_usermindid, "datetime_read": datetime_read}
+  var res = await postitemReadedmessageGroup(data , token);
+  // console.log("res.default: ", res.default);
   if (res.default) {
     item.success = true;
+    item.resID = res.default.insertId;
   }else {
     item.success = false;
   }
 }
 
-async function sendMessagetoFriend(item, token){
-  var res = await postMessagetoFriend();
+
+function getGroupUnreadmessage(groupID, token){
+  return new Promise(function(resolve, reject) {
+    var query = "/groupchats_unreadmessage?groupID="+groupID;
+    var xmlHttp = new XMLHttpRequest();
+    // myRequest.headers.get('Content-Type')
+    xmlHttp.open( "GET", query, false ); // false for synchronous request
+    xmlHttp.setRequestHeader("x-access-token", token);
+    xmlHttp.send("");
+    resolve(xmlHttp.responseText);
+  });;
+}
+
+async function sendMessagetoGroup(item, token){
+  var data = {"groupid": item.chatroom.id, "message": item.message, "datetime_send": item.datetimesend}
+  var res = await postMessagetoGroup(data , token);
+  // console.log("res.default: ", data, res.default);
   if (res.default) {
     item.success = true;
+    item.resID = res.default.insertId;
   }else {
     item.success = false;
   }
+}
+
+
+function postitemReadedmessageGroup(data, token){
+  return new Promise(( resolve, reject ) => {
+    const xhr = this.xhr = new XMLHttpRequest();
+    xhr.open( 'POST', '/postitemReadedmessageGroup', true );
+    xhr.responseType = 'json';
+    const loader = this.loader;
+    const genericErrorText = "Couldn't upload data";
+    // add listeners
+    xhr.addEventListener( 'error', () => reject( genericErrorText ) );
+    xhr.addEventListener( 'abort', () => reject() );
+    xhr.addEventListener( 'load', () => {
+      const response = xhr.response;
+      // This example assumes the XHR server's "response" object will come with
+      // an "error" which has its own "message" that can be passed to reject()
+      // in the upload promise.
+      // console.log("response.status: ", response);
+      if ( !response || response.error ) {
+        return reject( response && response.error ? response.error.message : genericErrorText );
+      }
+      // If the upload is successful, resolve the upload promise with an object containing
+      // at least the "default" URL, pointing to the image on the server.
+      // This URL will be used to display the image in the content. Learn more in the
+      // UploadAdapter#upload documentation.
+      resolve( {
+        default: response
+      } );
+      //  alert("upload: "+ response.status);
+    } );
+
+    // Upload progress when it is supported. The file loader has the #uploadTotal and #uploaded
+    // properties which are used e.g. to display the upload progress bar in the editor
+    // user interface.
+    if ( xhr.upload ) {
+      xhr.upload.addEventListener( 'progress', evt => {
+        if ( evt.lengthComputable ) {
+          var percentComplete = (evt.loaded / evt.total) * 100;
+        }
+        // console.log("evt percent: ", percentComplete);
+      });
+    }
+    const formdata = new FormData();
+    formdata.append( 'readerid', data.readerid );
+    formdata.append( 'unhide_usermindid', data.unhide_usermindid );
+    formdata.append( 'datetime_read', data.datetime_read );
+    // Send the request.
+    this.xhr.setRequestHeader("x-access-token", token);
+    this.xhr.send( formdata );
+  });
 }
 
 
 function postMessagetoGroup(data, token){
   return new Promise(( resolve, reject ) => {
     const xhr = this.xhr = new XMLHttpRequest();
-    xhr.open( 'POST', '/messagetogroup', true );
+    xhr.open( 'POST', '/postmessagetogroup', true );
     xhr.responseType = 'json';
     const loader = this.loader;
     const genericErrorText = "Couldn't upload data";
@@ -76,6 +145,15 @@ function abort() {
 }
 
 
+async function sendMessagetoFriend(item, token){
+  var res = await postMessagetoFriend();
+  if (res.default) {
+    item.success = true;
+  }else {
+    item.success = false;
+  }
+}
+
 
 function getFriendlist(token){
   return new Promise(function(resolve, reject) {
@@ -84,7 +162,7 @@ function getFriendlist(token){
     // myRequest.headers.get('Content-Type')
     xmlHttp.open( "GET", query, false ); // false for synchronous request
     xmlHttp.setRequestHeader("x-access-token", token);
-    xmlHttp.send( null );
+    xmlHttp.send( "" );
     resolve(xmlHttp.responseText);
 
   });;
@@ -97,7 +175,7 @@ function getGroup_chat(token){
     // myRequest.headers.get('Content-Type')
     xmlHttp.open( "GET", query, false ); // false for synchronous request
     xmlHttp.setRequestHeader("x-access-token", token);
-    xmlHttp.send( null );
+    xmlHttp.send( "" );
     resolve(xmlHttp.responseText);
 
   });;
@@ -110,7 +188,7 @@ function getGroupConversation(groupID, token){
     // myRequest.headers.get('Content-Type')
     xmlHttp.open( "GET", query, false ); // false for synchronous request
     xmlHttp.setRequestHeader("x-access-token", token);
-    xmlHttp.send( null );
+    xmlHttp.send( "" );
     resolve(xmlHttp.responseText);
   });;
 }
@@ -122,7 +200,7 @@ function getGroupInfomation(groupID, token){
     // myRequest.headers.get('Content-Type')
     xmlHttp.open( "GET", query, false ); // false for synchronous request
     xmlHttp.setRequestHeader("x-access-token", token);
-    xmlHttp.send( null );
+    xmlHttp.send( "" );
     resolve(xmlHttp.responseText);
   });;
 }
@@ -134,7 +212,7 @@ function getCurrentUsersession(token){
   // myRequest.headers.get('Content-Type')
   xmlHttp.open( "GET", query, false ); // false for synchronous request
   xmlHttp.setRequestHeader("x-access-token", token);
-  xmlHttp.send(null);
+  xmlHttp.send("");
   return xmlHttp.responseText;
 }
 

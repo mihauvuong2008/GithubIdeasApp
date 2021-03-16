@@ -27,7 +27,7 @@ let initAPIs = (app) => {
         var username = fields.username;
         var password = fields.password;
         var result = await mysqlDBTool.checklogin(username, password);
-
+        console.log(result);
         if (result) {
           const userFakeData = {
             _id: result.userid,
@@ -43,7 +43,8 @@ let initAPIs = (app) => {
           tokenList[refreshToken] = {accessToken, refreshToken};
 
           // debug(`Gửi Token và Refresh Token về cho client...`);
-          return res.status(200).json({accessToken, refreshToken});
+          var userid = result.userid, username = result.username;
+          return res.status(200).json({accessToken, refreshToken, userid, username});
 
         }else {
           res.json({ status: "login_false" }) ;
@@ -137,7 +138,9 @@ let initAPIs = (app) => {
   router.get("/groupchats", chatController.groupchatLists);
   router.get("/groupchats_messagedata", chatController.groupConversation);
   router.get("/groupchats_info", chatController.getGroupInfomation);
-  router.post("/messagetogroup", chatController.messagetoGroup);
+  router.post("/postmessagetogroup", chatController.postmessagetogroup);
+  router.get("/groupchats_unreadmessage", chatController.groupchats_Unreadmessagedata);
+  router.post("/postitemReadedmessageGroup", chatController.postitemReadedmessageGroup);
   // router.get("/example-protect-api", ExampleController.someAction);
   return app.use("/", router);
 }

@@ -68,6 +68,8 @@ CREATE TABLE IF NOT EXISTS private_message_data(
     FOREIGN KEY (receiver) REFERENCES chatappuser(userid)
 );
 
+
+
 INSERT INTO  chatappuser ( username, password , login ) value ('username1', '123456', FALSE);
 INSERT INTO  chatappuser ( username, password , login ) value ('username2', '123456', FALSE);
 INSERT INTO  chatappuser ( username, password , login ) value ('username3', '123456', FALSE);
@@ -150,6 +152,17 @@ INSERT INTO  member_of_chat_group (id_group, userid, datetime_join) value ( '4',
 INSERT INTO  member_of_chat_group (id_group, userid, datetime_join) value ( '5', '3', '2021-03-02 08:08:49');
 INSERT INTO  member_of_chat_group (id_group, userid, datetime_join) value ( '6', '3', '2021-03-02 08:08:49');
 
+
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '1', '1', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '1', '2', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '1', '1', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '1', '2', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '1', '1', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '1', '3', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '1', '2', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '2', '1', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '2', '1', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
+INSERT INTO  chat_group_message_data (id_group, sender, message_data,datetime_send) value ( '2', '1', 'bla bla bla bla ' ,'2021-03-02 08:08:49');
 
 
 

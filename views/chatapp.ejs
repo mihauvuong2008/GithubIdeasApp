@@ -11,13 +11,48 @@
   <div class="chatpanel">
 
     <div  id="pupleboxID" class="puplebox">
-      <div id="pupleID" class="puple" onclick="showtoolbar()"></div>
-      <div id="toolbarID" class="toolbar">
-        <div class="user_name">your username</div>
-        <div id="logout_buttonID" class="toolbarbutton logout_button">logout</div>
-        <div id="login_buttonID" class="toolbarbutton login_button">login</div>
-        <div class="toolbarbutton addfriend">add friend</div>
-        <div class="toolbarbutton newgroup">new group</div>
+      <div class="boxheader">
+        <div id="pupleID" class="puple" onclick="showtoolbar()"></div>
+        <div id="toolbarID" class="toolbar">
+          <div class="user_name">your username</div>
+          <div id="logout_buttonID" class="toolbarbutton logout_button">logout</div>
+          <div id="login_buttonID" class="toolbarbutton login_button">login</div>
+          <div class="toolbarbutton addfriend">add friend</div>
+          <div class="toolbarbutton newgroup" onclick="show_newgrouptoolbar()">new group</div>
+          <div class="toolbarbutton openstory" onclick="show_openstorytoolbar()">open story</div>
+        </div>
+      </div>
+      <div id="creategroupboxID" class="hidecreategroupbox">
+        <div class="newgroupinfo">
+          <textarea id="newgrouptext"></textarea>
+          <div class="createbutton">Create</div>
+        </div>
+        <div class="creategroup_friendlist">
+          <div class="creategroup_friendlist_item">
+            <div class="friendlist_item_name">friend 1</div>
+            <input class="friendlist_item_checker" type="checkbox">
+          </div>
+          <div class="creategroup_friendlist_item">
+            <div class="friendlist_item_name">friend 1</div>
+            <input class="friendlist_item_checker" type="checkbox">
+          </div>
+          <div class="creategroup_friendlist_item">
+            <div class="friendlist_item_name">friend 1</div>
+            <input class="friendlist_item_checker" type="checkbox">
+          </div>
+          <div class="creategroup_friendlist_item">
+            <div class="friendlist_item_name">friend 1</div>
+            <input class="friendlist_item_checker" type="checkbox">
+          </div>
+          <div class="creategroup_friendlist_item">
+            <div class="friendlist_item_name">friend 1</div>
+            <input class="friendlist_item_checker" type="checkbox">
+          </div>
+          <div class="creategroup_friendlist_item">
+            <div class="friendlist_item_name">friend 1</div>
+            <input class="friendlist_item_checker" type="checkbox">
+          </div>
+        </div>
       </div>
     </div>
     <div id="friendlistID" class="friendlist">
@@ -48,6 +83,213 @@
         </div>
       </div>
     </div>
+
+    <div id="liststoryID" class="hideliststory">
+      <div class="story">
+        <div class="storyheader">
+          <div class="embroiderers">
+            <div class="embroiderer">
+              <div class="embroiderer-icon">
+              </div>
+              <div class="embroiderer_name"> username 1
+              </div>
+              <div class="kickout_vote"> &times;
+              </div>
+            </div>
+            <div class="embroiderer">
+              <div class="embroiderer-icon">
+              </div>
+              <div class="embroiderer_name"> username 2
+              </div>
+              <div class="kickout_vote"> &times;
+              </div>
+            </div>
+            <div class="embroiderer">
+              <div class="embroiderer-icon">
+              </div>
+              <div class="embroiderer_name"> username 3
+              </div>
+              <div class="kickout_vote"> &times;
+              </div>
+            </div>
+            <div class="embroiderer">
+              <div class="embroiderer-icon">
+              </div>
+              <div class="embroiderer_name"> username 3
+              </div>
+              <div class="kickout_vote"> &times;
+              </div>
+            </div>
+          </div>
+          <div class="hand">
+            <div class="touchstory">
+              <div class="touchitem">
+                <div class="join">join
+                </div>
+                <div class="verify">
+                </div>
+              </div>
+              <div class="touchitem">
+                <div class="follow">follow
+                </div>
+                <div class="verify">
+                </div>
+              </div>
+              <div class="touchitem">
+                <div class="dontcare">dontcare
+                </div>
+                <div class="verify">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tell_story">
+          <div class="story_part">
+            <div class="whatsay "> story part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Here</div>
+            <div class="story_part_des">
+              <div class="whosay temphidden">	who say</div>
+              <div class="whensay temphidden">whensay</div>
+              <div class="wheresay temphidden">wheresay</div>
+              <div class="howsay temphidden">howsay</div>
+            </div>
+          </div>
+        </div>
+        <div class="comment_story">
+          <div class="comment_item">
+            <div class="commentuser">
+              <div class="commentuser-icon">
+              </div>
+              <div class="commentuser_name">commentuser name</div>
+            </div>
+            <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+          </div>
+          <div class="comment_item">
+            <div class="commentuser">
+              <div class="commentuser-icon">
+              </div>
+              <div class="commentuser_name">commentuser name</div>
+            </div>
+            <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+          </div>
+          <div class="comment_item">
+            <div class="commentuser">
+              <div class="commentuser-icon">
+              </div>
+              <div class="commentuser_name">commentuser name</div>
+            </div>
+            <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+          </div>
+        </div>
+        <div class="typingbox_comment hidden">
+          <textarea class="typingbox_comment_text" type="text"></textarea>
+          <div class="comment_sendbutton">send</div>
+        </div>
+      </div>
+      <div class="story">
+        <div class="storyheader">
+          <div class="embroiderers">
+            <div class="embroiderer">
+              <div class="embroiderer-icon">
+              </div>
+              <div class="embroiderer_name"> username 1
+              </div>
+              <div class="kickout_vote"> &times;
+              </div>
+            </div>
+            <div class="embroiderer">
+              <div class="embroiderer-icon">
+              </div>
+              <div class="embroiderer_name"> username 2
+              </div>
+              <div class="kickout_vote"> &times;
+              </div>
+            </div>
+            <div class="embroiderer">
+              <div class="embroiderer-icon">
+              </div>
+              <div class="embroiderer_name"> username 3
+              </div>
+              <div class="kickout_vote"> &times;
+              </div>
+            </div>
+          </div>
+          <div class="hand">
+            <div class="touchstory">
+              <div class="touchitem">
+                <div class="join">join
+                </div>
+                <div class="verify">
+                </div>
+              </div>
+              <div class="touchitem">
+                <div class="follow">follow
+                </div>
+                <div class="verify">
+                </div>
+              </div>
+              <div class="touchitem">
+                <div class="dontcare">dontcare
+                </div>
+                <div class="verify">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tell_story">
+          <div class="story_part">
+            <div class="whatsay "> story part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Here</div>
+            <div class="story_part_des">
+              <div class="whosay temphidden">	who say</div>
+              <div class="whensay temphidden">whensay</div>
+              <div class="wheresay temphidden">wheresay</div>
+              <div class="howsay temphidden">howsay</div>
+            </div>
+          </div>
+          <div class="story_part">
+            <div class="whatsay "> story part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Herestory part1 Content for  class "whatsay" Goes Here</div>
+            <div class="story_part_des">
+              <div class="whosay temphidden">	who say</div>
+              <div class="whensay temphidden">whensay</div>
+              <div class="wheresay temphidden">wheresay</div>
+              <div class="howsay temphidden">howsay</div>
+            </div>
+          </div>
+        </div>
+        <div class="comment_story">
+          <div class="comment_item">
+            <div class="commentuser">
+              <div class="commentuser-icon">
+              </div>
+              <div class="commentuser_name">commentuser name</div>
+            </div>
+            <div class="comment_content">Content for  class "comment_content" Goes HereContent for  class "comment_content" Goes HereContent for  class "comment_content" Goes HereContent for  class "comment_content" Goes Here</div>
+          </div>
+          <div class="comment_item">
+            <div class="commentuser">
+              <div class="commentuser-icon">
+              </div>
+              <div class="commentuser_name">commentuser name</div>
+            </div>
+            <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+          </div>
+          <div class="comment_item">
+            <div class="commentuser">
+              <div class="commentuser-icon">
+              </div>
+              <div class="commentuser_name">commentuser name</div>
+            </div>
+            <div class="comment_content">Content for  class "comment_content" Goes Here</div>
+          </div>
+        </div>
+
+        <div class="typingbox_comment hidden">
+          <textarea class="typingbox_comment_text" type="text"></textarea>
+          <div class="comment_sendbutton">send</div>
+        </div>
+      </div>
+    </div>
     <div class="chatboxbean">
       <div class="chatbox">
 
@@ -62,7 +304,9 @@
             </div>
             <div class="userchatboxmessagae">
               <div class="messageinfo">info message here</div>
-              <div class="messgetext">4Content for  class "messgetext" Goes Here</div>
+              <div>
+                <div class="messgetext msguser">4Content for  class "messgetext" Goes Here</div>
+              </div>
             </div>
           </div>
 
@@ -126,9 +370,6 @@
 
     </div>
 
-    <p/>
-    <p/>
-    <p/>
     <div id="loginformID" class="login">
       <div class="loginform">
 
@@ -165,25 +406,28 @@
 
   <script>
 
-  var yourID;
+  var userdata= {};
   async function login(){
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     var data = {"username": username, "password": password };
     var login_authenticate = await httploginchecker(data);
-    if(login_authenticate.default.status!==undefined){
+    // console.log(login_authenticate);
+    var reopen_loginform = false;
+    if(login_authenticate.default.status!==undefined){// kiem tra message tra ve login false
       if(login_authenticate.default.status.localeCompare("login_false")==0){
-        document.getElementById("loginformID").style.display = "block";
+        reopen_loginform = true;
         document.getElementById("loginstatusID").innerHTML = "login false";
       }
-    }else {
-      document.getElementById("loginstatusID").style.display = "none";
-      document.getElementById("loginformID").style.display = "none";
+    } else {
+      reopen_loginform = false;
       document.cookie = "chattoken= "+login_authenticate.default.accessToken+"";
       document.cookie = "chatrefreshtoken="+login_authenticate.default.refreshToken+"";
-      userid = login_authenticate.default.userid;
+      userdata.id = login_authenticate.default.userid;
+      userdata.username = login_authenticate.default.username;
       inituserData();
     }
+    openloginform(reopen_loginform);
   }
 
   async function getChatToken(){
@@ -200,62 +444,325 @@
   }
 
   class chatService{
+
     constructor(){
       this.isstart = false;
       this.timeout = 1000;
+      this.updaterate = {"delay": 800, "fullpower": 800};//ms
+      this.cooldownrate = {"rate": 10, "delay": 800};//ms
     }
 
-    async chatService(chatroom, conversation_){
+    async chatService(chatroom, sending_chatdata_cache_){
       var token = await getChatToken();
       while (true) {
         this.isstart = true;
         //send conversation:
-        conversation_.forEach(async (item, i) => {
+        sending_chatdata_cache_.forEach(async (item, i) => {
           if(item.chatroom){
-            if(!item.sended){
+            if(!item.sended||(!item.success&&item.sendingcount<5)){
+              this.updaterate.delay = 200;//ms for cooldown
               try {
                 if(item.chatroom.type.localeCompare("group")==0){
-                  sendMessagetoGroup(conversation_[i], token);
+                  await sendMessagetoGroup(item, token);
                   //item.success = res;
                 }else if(item.chatroom.type.localeCompare("friend")==0){
                   await  sendMessagetoFriend(item, token);
                 }
-                conversation_[i].sendingcount +=1;
+                item.sendingcount +=1;
                 item.sended = true;
-                console.log("item:",item);
+                // console.log("item:",item);
               } catch (e) {
                 console.log(e);
               } finally {
 
               }
+            } else {
+              //neu gui thanh cong
+              if (item.success) {
+                updatechatbox_msgitemsended_status(true, item);
+              }else if (item.sendingcount>=5) {// neu ko gui thanh cong
+                updatechatbox_msgitemsended_status(false, item);
+              }
+              this.cooldown(this.updaterate,  this.cooldownrate);
+            }
+
+          }
+        });
+
+        // set readed message
+        receive_chatdata_cache.forEach(async (item, i) => {
+          if (item.chatroom) {
+            if((item.userid!=userdata.id&&item.datetime_read==null)&&!item.sended&&item.viewinbrowser){
+              console.log("datetime_read",item);
+              try {
+                if(item.chatroom.type.localeCompare("group")==0){
+                  // item.datetime_read= new Date().toISOString().slice(0, 19).replace('T', ' '),
+                  await setitem_readedMessage_Group(item,getDateString(new Date()), token);
+                  //item.success = res;
+                }else if(item.chatroom.type.localeCompare("friend")==0){
+                  //await  setitem_readed_toFriendMessage(item, token);
+                }
+                item.sendingcount +=1;
+                item.sended = true;
+                // console.log("setitem_readedMessage_Group:",item);
+              } catch (e) {
+                console.log(e);
+              } finally {
+
+              }
+            }else if (!item.viewinbrowser) {
+              // console.log("item.viewinbrowser", item.viewinbrowser);
+              await insert_item_to_chatbox_browser(item);
             }
           }
         });
 
+        //loadnewUser_notice
+        loadUser_notice();
         //update chatbox
         if(chatroom.type.localeCompare("group")==0){
-          loadGroupConversation(chatroom.id);
+          if(groupchatboxhavenewmessage())
+          updatechatbox_updateGroupConversation(chatroom.id);
         }else {
+          if(friendchatboxhavenewmessage())
           loadFriendConversation(chatroom.id);
         }
-        // check server has response new message
-        await sleep(800);
+        console.log("this.updaterate.delay", this.updaterate.delay);
+        await sleep(this.updaterate.delay);
       }
+    }
+    async cooldown(updaterate,  cooldownrate){
+      if(updaterate.delay >=  updaterate.fullpower){
+        updaterate.delay = updaterate.fullpower;
+        return ;
+      }
+      for (var i = 0; i < cooldownrate.rate||updaterate.delay <  updaterate.fullpower; i++) {
+        await sleep(cooldownrate.delay);
+        updaterate.delay +=100;
+        // console.log("updaterate.fullpower", updaterate.fullpower, updaterate.fullpower);
+      }
+      updaterate.delay = 800;//ms
     }
   }
 
+  function insert_item_to_chatbox_browser(item_){
+    // console.log("item_: ", item_);
+    new Promise(function(resolve, reject) {
+      var addfirst = false;
+      if (!sending_chatdata_cache){addfirst = true; }
+      else if (sending_chatdata_cache.length==0){addfirst = true; }
+      else if (item_.datetime_unhide<=sending_chatdata_cache[0].datetimesend) addfirst = true;
+      if (addfirst) {
+        // console.log("insert_item_to_chatbox_browser addfirst", item_);
+        const messageitem = makeHTMLitemforInsertChatbox_from_cacheData(item_);
+        var messagebox = document.getElementById("messageboxID");
+        messagebox.append(messageitem);
+        item_.viewinbrowser = true;
+      } else {
+        // console.log("Item_to_insert temp", item_);
+        var Item_to_insert;
+        sending_chatdata_cache.some((item, i) => {
+          // console.log("item_.datetime_unhide>item.datetimesend:",new Date(item_.datetime_unhide), new Date(item.datetimesend),new Date(item_.datetime_unhide)>new Date(item.datetimesend));
+          if (new Date(item_.datetime_unhide)>new Date(item.datetimesend)) {
+            // console.log("insert_item_to_chatbox_browser return ;", item_);
+
+            Item_to_insert = document.getElementById("sended"+item.post_data_id); // i will insert insertAfter
+
+          }else {
+            Item_to_insert = document.getElementById("sended"+item.post_data_id); // insert before now
+            if (!Item_to_insert)return true;
+            // console.log(Item_to_insert);
+            var messageitem = makeHTMLitemforInsertChatbox_from_cacheData(item_);
+            //console.log("insert insertAfter");
+            //Item_to_insert.parentNode.insertBefore(messageitem, messageitem.nextSibling);
+            console.log("insert insertBefore");
+            Item_to_insert.parentNode.insertBefore(messageitem, Item_to_insert);
+            item_.viewinbrowser = true;
+            return true;
+          }
+        });
+
+        if (!item_.viewinbrowser ) {
+          if (!Item_to_insert){
+            resolve();
+          }
+          // console.log(Item_to_insert);
+          // console.log("insert insertAfter");
+          var messageitem = makeHTMLitemforInsertChatbox_from_cacheData(item_);
+          //console.log("insert insertBefore");
+          console.log("insert insertAfter");
+          Item_to_insert.parentNode.insertBefore(messageitem, messageitem.nextSibling);
+          //Item_to_insert.parentNode.insertBefore(messageitem, Item_to_insert);
+          item_.viewinbrowser = true;
+        }
+      }
+      refreshchatbox();
+      resolve();
+    });
+  }
+
+  function makeHTMLitemforInsertChatbox_from_cacheData(item_) {
+    const messageitem = document.createElement("div");
+    messageitem.classList.add("messageitem");
+    const messageitem_icon = document.createElement("div");
+    messageitem_icon.classList.add("messageitem_icon");
+    const _chatboxmessagae = document.createElement("div");
+    _chatboxmessagae.classList.add("guestchatboxmessagae");
+    const hidemessageinfo= document.createElement("div");
+    hidemessageinfo.classList.add("hidemessageinfo");
+    hidemessageinfo.innerHTML = getDateString(new Date(item_.datetime_unhide));
+    hidemessageinfo.id = "messageinfoID" + item_.unhide_usermindid;
+    const messgetextbean= document.createElement("div");
+    const messgetext= document.createElement("div");
+    messgetext.classList.add("messgetext");
+    messgetext.classList.add("msgguest");
+    messgetext.id = "message_dataID" + item_.unhide_usermindid;
+    messgetext.addEventListener("click", function() {
+      // show info text
+      var id = this.id.substring(14);
+      var infoID = "messageinfoID"+id ;
+      var classname = document.getElementById(infoID).className;
+      if (classname.localeCompare("hidemessageinfo")==0) {
+        document.getElementById(infoID).className = "messageinfo";
+      }else if (classname.localeCompare("messageinfo")==0) {
+        document.getElementById(infoID).className = "hidemessageinfo";
+      }
+    });
+    messgetext.innerHTML = item_.message_data;
+    messgetextbean.appendChild(messgetext);
+    _chatboxmessagae.appendChild(hidemessageinfo);
+    _chatboxmessagae.appendChild(messgetextbean);
+    messageitem.appendChild(messageitem_icon);
+    messageitem.appendChild(_chatboxmessagae);
+    return messageitem;
+  }
+
+  async  function loadUser_notice(){
+    var token = await getChatToken();
+    //User_notice.unreadGroupmessage = JSON.parse(await getunreadGroupmessage(token));
+    //User_notice.unreadFriendmessage = JSON.parse(await getunreadFriendmessage(token));
+  }
+
+  function groupchatboxhavenewmessage(){return true;
+    User_notice.unreadGroupmessage,forEach((item, i) => {
+      if (item.id = currchatroom.id) {
+        return true;
+      }
+    });
+  }
+
+  function friendchatboxhavenewmessage(){return true;
+    User_notice.unreadFriendmessage,forEach((item, i) => {
+      if (item.id = currchatroom.id) {
+        return true;
+      }
+    });
+  }
+
+  function updatechatbox_msgitemsended_status(update_status, item){
+    var gettempmessElement = document.getElementById("tempmessageitemID"+item.post_data_id);
+    if (gettempmessElement) {
+      const hidemessageinfo= document.getElementById("tempmessageinfoID"+item.post_data_id);
+      const messgetext= document.getElementById("tempmessagetextID"+item.post_data_id);
+      if (update_status) {
+        hidemessageinfo.innerHTML = item.datetimesend;
+        hidemessageinfo.id = "messageinfoID" + item.resID;
+        hidemessageinfo.className = "hidemessageinfo";
+        messgetext.id = "message_dataID" + item.resID;
+        messgetext.addEventListener("click", function() {
+          var infoID = "messageinfoID"+item.resID ;
+          // console.log(infoID);
+          var classname = document.getElementById(infoID).className;
+          if (classname.localeCompare("hidemessageinfo")==0) {
+            document.getElementById(infoID).className = "messageinfo";
+          } else if (classname.localeCompare("messageinfo")==0) {
+            document.getElementById(infoID).className = "hidemessageinfo";
+          }
+        });
+      } else {
+        hidemessageinfo.innerHTML = "send fail, click to resend";
+        messgetext.addEventListener("click", function() {
+
+          var gettempmessElement = document.getElementById("sended" + item.post_data_id);
+          if (gettempmessElement&&item.sended) {
+            gettempmessElement.id = "tempmessageitemID" + item.post_data_id;
+            //show hand to user resend
+            item.sended = false;
+            item.success = false;
+            item.sendingcount = 0;
+            messgetext.style.backgroundColor = "";
+          }
+        });
+        messgetext.style.backgroundColor = "#E00003";
+      }
+      // for give it
+      gettempmessElement.id = "sended"+item.post_data_id;
+    }
+  }
+
+  var partnerchat_data_id = 0;
+  async function updatechatbox_updateGroupConversation(){
+    var token = await getChatToken();
+    var groupUnreadmessage = JSON.parse(await getGroupUnreadmessage(currchatroom.id, token));
+    // console.log("groupUnreadmessage", groupUnreadmessage);
+    if(groupUnreadmessage){
+      if (groupUnreadmessage.length==0) return ;
+      groupUnreadmessage.forEach((item, i) => {
+        // add guest message
+        var flag = true;
+        if (receive_chatdata_cache)
+        receive_chatdata_cache.forEach((item_, i) => {
+          // console.log(item_.unhide_usermindid, "  ",item.unhide_usermindid);
+          if (item_.unhide_usermindid==item.unhide_usermindid) {
+            flag = false;
+          }
+        });
+        if (flag) {
+          var partnerchat_data = {
+            "partnerchat_data_id": partnerchat_data_id,
+            "chatroom": currchatroom,
+            "userid": item.userid,
+            "username": item.username,
+            "unhide_usermindid": item.unhide_usermindid,
+            "datetime_unhide":item.datetime_unhide,
+            "message_data": item.message_data,
+            "login": item.login,
+            "datetime_read": null,
+            "sended": false,
+            "success": false,
+            "sendingcount": 0,
+            "viewinbrowser": false,
+            "resID": {"readerid": -1, "unhide_usermindid":-1}
+          };
+          console.log("partnerchat_data: ", partnerchat_data);
+          receive_chatdata_cache.push(partnerchat_data);
+          partnerchat_data_id += 1;
+        }
+      });
+    }
+
+  }
+
+
+
   var currchatroom = {type: "unset", id: -1},
-  conversation = [],
+  sending_chatdata_cache = [],
+  receive_chatdata_cache = [],
   groupchat_list,
   friendchat_list,
   user_isscrollchatbox=false,
-  id_chatitem_selected;
+  id_chatitem_selected,
+  User_notice = {},
+  lastCountgroupConversation = 0;
+
   chatService_ = new chatService();
+
   async  function inituserData() {
     var token = await getChatToken();
     friendchat_list = JSON.parse(await getFriendlist(token));
-    initFriendList(friendchat_list);
     groupchat_list = JSON.parse(await getGroup_chat(token));
+    console.log(groupchat_list);
+    initFriendList(friendchat_list);
     initGroupchatList(groupchat_list);
   }
 
@@ -282,7 +789,7 @@
     groupchat_list.forEach((item, i) => {
       const groupitem = document.createElement("div");
       groupitem.classList.add("groupitem");
-      groupitem.id = "groupitemID"+item.id_group;
+      groupitem.id = "groupitemID"+item.groupid;
       groupitem.addEventListener("mouseup", function (){ id_chatitem_selected = this.id;});
       groupitem.addEventListener("mouseout", function (){
         if(this.id.localeCompare(id_chatitem_selected)!=0){
@@ -320,7 +827,7 @@
       groupitemname.classList.add("groupitemname");
       const groupname = document.createElement("div");
       groupname.classList.add("groupname");
-      groupname.id = "groupnameID"+item.id_group;
+      groupname.id = "groupnameID"+item.groupid;
       groupname.innerHTML = item.group_name;
       groupiconparent.appendChild(groupicon1);
       groupiconparent.appendChild(groupicon2);
@@ -333,25 +840,11 @@
     });
   }
 
-  function cancel(){
-    document.getElementById("loginformID").style.display = "none";
-  }
-
-  function selectchatroom_group(groupid){
-    groupChat_hightlight(groupid);
-    var groupID = groupid.substring(11);
-    currchatroom.type = "group";
-    currchatroom.id = groupID;
-    // loadMember(id);
-    loadGroupchatbox(groupID);
-    loadGroupConversation(groupID);
-  }
-
   async function loadGroupchatbox(groupID){
     var token = await getChatToken();
     var group = JSON.parse(await getGroupInfomation(groupID, token));
     if(group){
-      var creator = group[0].creator, group_name = group[0].group_name, id_group = group[0].id_group;
+      var creator = group[0].creator, group_name = group[0].group_name, groupid = group[0].groupid;
       document.getElementById("chatboxnameID").innerHTML=group_name;
       var memberList = document.getElementById("memberID");
       memberList.innerHTML="";
@@ -369,7 +862,7 @@
         memberitem.appendChild(onlinestatus);
         memberitem.appendChild(icon);
         memberitem.appendChild(username);
-        if (creator ==yourID) {
+        if (creator ==userdata.id) {
           const removemember = document.createElement("div");
           removemember.classList.add("removemember");
           removemember.id = "removememberitemID"+item.userid;
@@ -380,7 +873,7 @@
 
       });
 
-      if (creator ==(yourID)) {
+      if (creator ==(userdata.id)) {
         const memberitem = document.createElement("div");
         memberitem.classList.add("memberitem");
         const memberinvite = document.createElement("div");
@@ -392,12 +885,11 @@
     }
   }
 
-  var lastCountgroupConversation = 0;
   async function loadGroupConversation(groupID){
     var token = await getChatToken();
     var groupConversation = JSON.parse(await getGroupConversation(groupID, token));
-    var messageItem="";
-    document.getElementById("messageboxID").innerHTML = "";
+    var messagebox = document.getElementById("messageboxID");
+    messagebox.innerHTML = "";
     if(groupConversation)
     groupConversation.forEach((item, i) => {
       // console.log("item: ",item);
@@ -406,37 +898,63 @@
       const messageitem_icon = document.createElement("div");
       messageitem_icon.classList.add("messageitem_icon");
       const _chatboxmessagae = document.createElement("div");
-      _chatboxmessagae.classList.add( yourID == item.sender?"userchatboxmessagae":"guestchatboxmessagae");
+      _chatboxmessagae.classList.add( userdata.id == item.userid?"userchatboxmessagae":"guestchatboxmessagae");
       const hidemessageinfo= document.createElement("div");
       hidemessageinfo.classList.add("hidemessageinfo");
-      hidemessageinfo.innerHTML = "send: "+item.datetime_send.slice(0, 19).replace('T', ' ');
-      hidemessageinfo.id = "messageinfoID" + item.id_message;
+      hidemessageinfo.innerHTML =  getDateString(new Date(item.datetime_unhide));
+      hidemessageinfo.id = "messageinfoID" + item.unhide_usermindid;
+      const messgetextbean= document.createElement("div");
       const messgetext= document.createElement("div");
       messgetext.classList.add("messgetext");
-      messgetext.id = "message_dataID" + item.id_message;
+      if (userdata.id == item.userid) {
+        messgetext.classList.add("msguser");
+      }else {
+        messgetext.classList.add("msgguest");
+      }
+      messgetext.id = "message_dataID" + item.unhide_usermindid;
       messgetext.addEventListener("click", function() {
         // show info text
-        // var id = message_dataID.substring(14);
-        // var infoID = "messageinfoID"+id ;
-        // var classname = document.getElementById(infoID).className;
-        // if (classname.localeCompare("hidemessageinfo")==0) {
-        //   document.getElementById(infoID).className = "messageinfo";
-        // }else if (classname.localeCompare("messageinfo")==0) {
-        //   document.getElementById(infoID).className = "hidemessageinfo";
-        // }
+        var id = this.id.substring(14);
+        var infoID = "messageinfoID"+id ;
+        var classname = document.getElementById(infoID).className;
+        if (classname.localeCompare("hidemessageinfo")==0) {
+          document.getElementById(infoID).className = "messageinfo";
+        }else if (classname.localeCompare("messageinfo")==0) {
+          document.getElementById(infoID).className = "hidemessageinfo";
+        }
       });
       messgetext.innerHTML = item.message_data;
+      messgetextbean.appendChild(messgetext);
       messageitem.appendChild(messageitem_icon);
       messageitem.appendChild(_chatboxmessagae);
       _chatboxmessagae.appendChild(hidemessageinfo);
-      _chatboxmessagae.appendChild(messgetext);
-      document.getElementById("messageboxID").prepend(messageitem);
+      _chatboxmessagae.appendChild(messgetextbean);
+      messagebox.prepend(messageitem);
+
+      var partnerchat_data = {
+        "partnerchat_data_id": partnerchat_data_id,
+        "chatroom": currchatroom,
+        "userid": item.userid,
+        "username": item.username,
+        "unhide_usermindid": item.unhide_usermindid,
+        "datetime_unhide":item.datetime_unhide,
+        "message_data": item.message_data,
+        "login": item.login,
+        "datetime_read": item.datetime_read,
+        "sended": false,
+        "success": false,
+        "sendingcount": 0,
+        "viewinbrowser": true,
+        "resID": {"readerid": -1, "unhide_usermindid":-1}
+      };
+      receive_chatdata_cache.push(partnerchat_data);
+      partnerchat_data_id += 1;
+      // console.log("item.datetime_read", partnerchat_data);
     });
     if (lastCountgroupConversation<groupConversation.length&&!user_isscrollchatbox) {
       refreshchatbox();
-      console.log("refreshchatbox");
-      lastCountgroupConversation = groupConversation.length;
     }
+    lastCountgroupConversation = groupConversation.length;
   }
 
 
@@ -460,7 +978,7 @@
     //   messageItem+="<div class='messageitem'>"
     //   +"<div class='messageitem_icon'>"
     //   +"</div>"
-    //   +"<div class='"+( yourID == item.sender?"userchatboxmessagae":"guestchatboxmessagae")+"'>"+item.message_data+"</div>"
+    //   +"<div class='"+( userdata.id == item.sender?"userchatboxmessagae":"guestchatboxmessagae")+"'>"+item.message_data+"</div>"
     //   +"</div>"
     // });
     // document.getElementById("messageboxID").innerHTML = messageItem;
@@ -474,26 +992,65 @@
     }
   }
 
+  var post_data_id = 0;
   function sendMessage(){
     var typingbox = document.getElementById("typingboxID");
-    var mess = typingbox.value;
+    var mess = typingbox.value.replaceAll(/'/g, "\\'");
     if(mess.localeCompare("")==0)return;
-    temporaryClientShowMessage(mess);
     var post_data = {
+      "post_data_id":post_data_id,
       "chatroom": currchatroom,
       "message": mess,
-      "datetimesend" :new Date().toISOString().slice(0, 19).replace('T', ' ') ,
+      "datetimesend" :getDateString(new Date()) ,
       "sended": false,
       "success": false,
       "sendingcount": 0,
       "resID":-1
     };
-
-    putto_conversation_sender(post_data);
+    temporaryShowClientMessage(post_data_id, mess);
+    putto_sending_chatdata_cachesender(post_data);
     refreshchatbox();
     document.getElementById("typingboxID").value = "";
+    post_data_id += 1;
   }
 
+
+
+  function putto_sending_chatdata_cachesender(post_data){
+    sending_chatdata_cache.push(post_data);
+    // console.log(sending_chatdata_cache);
+  }
+
+  function temporaryShowClientMessage(post_data_id, mess){
+    const messageitem = document.createElement("div");
+    messageitem.classList.add("messageitem");
+    messageitem.id = "tempmessageitemID"+post_data_id;
+    const messageitem_icon = document.createElement("div");
+    messageitem_icon.classList.add("messageitem_icon");
+    const userchatboxmessagae = document.createElement("div");
+    userchatboxmessagae.classList.add("userchatboxmessagae");
+    const messageinfo = document.createElement("div");
+    messageinfo.id = "tempmessageinfoID"+post_data_id;
+    messageinfo.classList.add("messageinfo");
+    messageinfo.innerHTML="sending...";
+    const messgetextbean= document.createElement("div");
+    const messgetext = document.createElement("div");
+    messgetext.id = "tempmessagetextID"+post_data_id;
+    messgetext.classList.add("messgetext");
+    messgetext.classList.add("msguser");
+    messgetext.innerHTML = mess;
+    // console.log("mess: ", mess);
+    messgetextbean.appendChild(messgetext);
+    userchatboxmessagae.appendChild(messageinfo);
+    userchatboxmessagae.appendChild(messgetextbean);
+    messageitem.appendChild(messageitem_icon);
+    messageitem.appendChild(userchatboxmessagae);
+    document.getElementById("messageboxID").appendChild(messageitem);
+  }
+
+  // var ary = ['three', 'seven', 'eleven'];
+  //
+  // ary.remove('seven');
   Array.prototype.remove = function() {
     var what, a = arguments, L = a.length, ax;
     while (L && this.length) {
@@ -504,30 +1061,11 @@
     }
     return this;
   };
-
-  // var ary = ['three', 'seven', 'eleven'];
-  //
-  // ary.remove('seven');
-  function putto_conversation_sender(post_data){
-    conversation.push(post_data);
-  }
-
-  function temporaryClientShowMessage(mess){
-    const messageitem = document.createElement("div");
-    messageitem.classList.add("messageitem");
-    const messageitem_icon = document.createElement("div");
-    messageitem_icon.classList.add("messageitem_icon");
-    const userchatboxmessagae = document.createElement("div");
-    userchatboxmessagae.classList.add("userchatboxmessagae");
-    userchatboxmessagae.innerHTML = mess;
-    messageitem.appendChild(messageitem_icon);
-    messageitem.appendChild(userchatboxmessagae);
-    document.getElementById("messageboxID").appendChild(messageitem);
-  }
-
   function refreshchatbox(){
+    console.log("refreshchatbox");
     var height = document.getElementById("messageboxID").scrollHeight;
-    document.getElementById("messageboxID").scrollTop = height;
+    var limit = window.scrollMaxY? Math.max (window.scrollMaxY, document.getElementById("messageboxID").scrollHeight - document.getElementById("messageboxID").clientHeight):  document.getElementById("messageboxID").scrollHeight - document.getElementById("messageboxID").clientHeight;
+    document.getElementById("messageboxID").scrollTop = limit;
     user_isscrollchatbox =false;
   }
 
@@ -538,7 +1076,7 @@
 
   function seruser_isscrollboxtrue(){
     // scroll is max position
-    var limit =window.scrollMaxY || document.getElementById("messageboxID").scrollHeight - document.getElementById("messageboxID").clientHeight;
+    var limit = window.scrollMaxY? Math.max (window.scrollMaxY, document.getElementById("messageboxID").scrollHeight - document.getElementById("messageboxID").clientHeight):  document.getElementById("messageboxID").scrollHeight - document.getElementById("messageboxID").clientHeight;
     if (document.getElementById("messageboxID").scrollTop == limit) {
       user_isscrollchatbox =false;
       return;
@@ -547,30 +1085,51 @@
   }
 
   function startChatservice(){
-    console.log(conversation, chatService_.isstart);
+    console.log("start service", sending_chatdata_cache, chatService_.isstart);
     if(!chatService_.isstart){
-      chatService_.chatService(currchatroom, conversation);
+      chatService_.chatService(currchatroom, sending_chatdata_cache);
     }
   }
 
-  window.onload = async (event) => {
-    var token = await getChatToken();
-    user =JSON.parse( getCurrentUsersession(token));
-    startChatservice();
-    if(user.availble){
-      // console.log("user: "+ user.availble);
-      // console.log("user: "+ user.session);
-      yourID = user.session;
-      document.getElementById("loginformID").style.display = "none";
-      document.getElementById("logout_buttonID").style.display = "";
-      document.getElementById("login_buttonID").style.display = "none";
-
-      inituserData();
-    }else {
+  function openloginform(open){
+    if(open){
       document.getElementById("loginformID").style.display = "block";
       document.getElementById("logout_buttonID").style.display = "none";
       document.getElementById("login_buttonID").style.display = "";
+    }else {
+      document.getElementById("loginformID").style.display = "none";
+      document.getElementById("logout_buttonID").style.display = "";
+      document.getElementById("login_buttonID").style.display = "none";
     }
+  }
+
+  function cancel(){
+    document.getElementById("loginformID").style.display = "none";
+  }
+
+  async function loaduserdata() {
+    var token = await getChatToken();
+    var user =JSON.parse( getCurrentUsersession(token));
+    startChatservice();
+    if(user.availble){
+      userdata.id = user.session;
+      userdata.username = user.username;
+      inituserData();
+    }else {
+      openloginform(!user.availble);
+    }
+  }
+  function getDateString(d){
+    const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+    const mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(d);
+    const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+    const hh = new Intl.DateTimeFormat('en', { hour: '2-digit', hour12: false }).format(d);
+    const mm = new Intl.DateTimeFormat('en', { minute: '2-digit' }).format(d);
+    const ss = new Intl.DateTimeFormat('en', { second: '2-digit' }).format(d);
+    return  `${ye}-${mo}-${da} ${hh}:${mm}:${ss}`;
+  }
+  window.onload = (event) => {
+    loaduserdata();
   };
 
   // home puple box
@@ -581,10 +1140,35 @@
       document.getElementById("toolbarID").className = "toolbar";
     }else {
       document.getElementById("toolbarID").className = "hidetoolbar";
+      if(!show_newgroup){
+        document.getElementById("creategroupboxID").className = "hidecreategroupbox";
+        show_newgroup = !show_newgroup;
+      }
     }
     show = !show;
   }
+  var show_newgroup = true;
+  function show_newgrouptoolbar(){
+    if(pressandmove)return ;
+    if(show_newgroup){
+      document.getElementById("creategroupboxID").className = "creategroupbox";
+    }else {
+      document.getElementById("creategroupboxID").className = "hidecreategroupbox";
+    }
+    show_newgroup = !show_newgroup;
+  }
 
+  var show_openstory = true;
+  function show_openstorytoolbar(){
+    if(pressandmove)return ;
+    if(show_openstory){
+      document.getElementById("liststoryID").className = "liststory";
+    }else {
+      document.getElementById("liststoryID").className = "hideliststory";
+    }
+    show_openstory = !show_openstory;
+  }
+  // home box moving
   var leftMouseButtonOnlyDown;
   var pressandmove = false;
   function setLeftButtonState_onmousemove(e) {
@@ -697,10 +1281,10 @@
     var id = groupID.substring(11);
     if(groupchat_list)
     groupchat_list.forEach((item, i) => {
-      if(item.id_group==parseInt(id)){
+      if(item.groupid==parseInt(id)){
         document.getElementById(groupID).style.backgroundColor = "#daf2ef";
       }else {
-        document.getElementById("groupitemID"+item.id_group).style.backgroundColor = "";
+        document.getElementById("groupitemID"+item.groupid).style.backgroundColor = "";
       }
     });
   }
