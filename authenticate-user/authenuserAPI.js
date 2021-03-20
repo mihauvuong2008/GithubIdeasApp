@@ -29,6 +29,7 @@ let initAPIs = (app) => {
         var result = await mysqlDBTool.checklogin(username, password);
         console.log(result);
         if (result) {
+          mysqlDBTool.updateAccount_islogin(username, getDateString(new Date()));
           const userFakeData = {
             _id: result.userid,
             name: result.username,
@@ -129,6 +130,18 @@ let initAPIs = (app) => {
     }
   });
 
+  function getDateString(d){
+    const ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+    const mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(d);
+    const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+    var hh = new Intl.DateTimeFormat('en', { hour: '2-digit', hour12: false }).format(d);
+    const mm = new Intl.DateTimeFormat('en', { minute: '2-digit' }).format(d);
+    const ss = new Intl.DateTimeFormat('en', { second: '2-digit' }).format(d);
+    if (parseInt(hh)>23) {
+      hh="00";
+    }
+    return  `${ye}-${mo}-${da} ${hh}:${mm}:${ss}`;
+  }
 
   // check session availble:
   router.get("/getuserSession", chatController.getuserSession_availble);
@@ -137,10 +150,13 @@ let initAPIs = (app) => {
   // List Protect APIs:
   router.get("/groupchats", chatController.groupchatLists);
   router.get("/groupchats_messagedata", chatController.groupConversation);
-  router.get("/groupchats_info", chatController.getGroupInfomation);
+  router.get("/groupchats_info", chatController.groupInfomation);
   router.post("/postmessagetogroup", chatController.postmessagetogroup);
   router.get("/groupchats_unreadmessage", chatController.groupchats_Unreadmessagedata);
   router.post("/postitemReadedmessageGroup", chatController.postitemReadedmessageGroup);
+  router.get("/groupnotify", chatController.groupnotify);
+  router.get("/istillonline", chatController.istillonline);
+  router.get("/friendstillonline", chatController.friendstillonline);
   // router.get("/example-protect-api", ExampleController.someAction);
   return app.use("/", router);
 }

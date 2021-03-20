@@ -1,3 +1,30 @@
+
+async function getfriendstillonline(userid, token){
+  return new Promise(function(resolve, reject) {
+    var query = "/friendstillonline?userid="+userid;
+    var xmlHttp = new XMLHttpRequest();
+    // myRequest.headers.get('Content-Type')
+    xmlHttp.open( "GET", query, false ); // false for synchronous request
+    xmlHttp.setRequestHeader("x-access-token", token);
+    xmlHttp.send("");
+    // console.log("group online here: ", xmlHttp.responseText);
+    resolve(xmlHttp.responseText);
+  });
+}
+
+async function istillonline(token){
+  // new Promise(function(resolve, reject) {
+  var query = "/istillonline";
+  var xmlHttp = new XMLHttpRequest();
+  // myRequest.headers.get('Content-Type')
+  xmlHttp.open( "GET", query, false ); // false for synchronous request
+  xmlHttp.setRequestHeader("x-access-token", token);
+  xmlHttp.send("");
+  // console.log("group notify here: ", xmlHttp.responseText);
+  return(xmlHttp.responseText);
+  // });
+}
+
 async function setitem_readedMessage_Group(item, datetime_read, token){
   var data = {"readerid": "token", "unhide_usermindid": item.unhide_usermindid, "datetime_read": datetime_read}
   var res = await postitemReadedmessageGroup(data , token);
@@ -5,11 +32,24 @@ async function setitem_readedMessage_Group(item, datetime_read, token){
   if (res.default) {
     item.success = true;
     item.resID = res.default.insertId;
+    item.datetime_read = datetime_read;
   }else {
     item.success = false;
   }
 }
 
+async function getGroupNotify(token){
+  // new Promise(function(resolve, reject) {
+  var query = "/groupnotify";
+  var xmlHttp = new XMLHttpRequest();
+  // myRequest.headers.get('Content-Type')
+  xmlHttp.open( "GET", query, false ); // false for synchronous request
+  xmlHttp.setRequestHeader("x-access-token", token);
+  xmlHttp.send("");
+  // console.log("group notify here: ", xmlHttp.responseText);
+  return(xmlHttp.responseText);
+  // });
+}
 
 function getGroupUnreadmessage(groupID, token){
   return new Promise(function(resolve, reject) {
@@ -20,13 +60,14 @@ function getGroupUnreadmessage(groupID, token){
     xmlHttp.setRequestHeader("x-access-token", token);
     xmlHttp.send("");
     resolve(xmlHttp.responseText);
-  });;
+  });
 }
 
-async function sendMessagetoGroup(item, token){
-  var data = {"groupid": item.chatroom.id, "message": item.message, "datetime_send": item.datetimesend}
+async function sendMessagetoGroup(groupid, item, token){
+  var data = {"groupid": groupid, "message": item.message, "datetime_send": item.datetimesend}
+  console.log("data:", data);
   var res = await postMessagetoGroup(data , token);
-  // console.log("res.default: ", data, res.default);
+  // console.log("message send, res.default: ",res, data, res.default);
   if (res.default) {
     item.success = true;
     item.resID = res.default.insertId;

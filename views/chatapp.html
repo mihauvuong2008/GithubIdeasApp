@@ -7,8 +7,64 @@
 </head>
 
 <body>
+<div class="recentchatbox">
+  <div class="noticebean">
+	  <div class="notice">
+		<div class="noticevalue">1
+		</div>
+	  </div>
+  </div>
+	<div class="closebean">
+	  <div class="close">
+		<div class="closeicon">&times;
+		</div>
+	  </div>
+  </div>
+  <div class="onlinestatus"> 
+  </div>
+  <div class="recentchatboxicon">
+	  <table cellspacing="1px" cellpadding="0">
+		  <tbody>
+			<tr>
+			  <td> 
+				<div class="recentmembericon">
+			  	</div>
+			  </td>
+			  <td> 
+				  <div class="recentmembericon">
+				  </div>
+			  </td>
+			</tr>
+			<tr>
+			  <td> 
+				<div class="recentmembericon">
+			  	</div>
+			  </td>
+			  <td> 
+				<div class="recentmembericon">
+				</div>
+			  </td>
+			</tr>
+		  </tbody>
+		</table>
+  </div>
+  <div id="recentchatboxlabellID" class="recentchatboxlabel">
+    <div class="pointer">
+	</div>
+	<div class="recentchatboxname">Content for  class "recentchatboxname" Goes Here</div>
+  </div>
+</div>
+
+	<div class="recentchatbox" style="right: 50px">
+  <div class="onlinestatus"> 
+  </div>
+  <div class="recentchatboxicon">
+
+  </div>
+</div>
+
 <div class="chatpanel">
-<div id="pupleboxID" class="puplebox">
+  <div id="pupleboxID" class="puplebox">
 	<div class="boxheader">
 	<div id="pupleID" class="puple"></div>
 	<div class="toolbar">
@@ -17,6 +73,8 @@
 	  <div class="toolbarbutton login_button">login</div>
 	  <div class="toolbarbutton addfriend">add friend</div>
 	  <div class="toolbarbutton newgroup">new group</div>
+	  <div class="toolbarbutton unhideyourmind">unhide yourmind</div>
+	  <div class="toolbarbutton yourface">your face</div>
 	  <div class="toolbarbutton openstory">open story</div>
     </div>
 	</div>
@@ -178,13 +236,17 @@
 	  
   </div>
 	
-  <div class="liststory">
+  <div class="hideliststory">
+	<div class="makeastory">
+			<div class="makeastorybutton"> + Make a story
+			</div>
+  	</div>
 	<div class="story">
 	  <div class="storyheader">
 		  <div class="embroiderers">
 			<div class="embroiderer">
 			  <div class="embroiderer-icon">
-				</div>
+			  </div>
 			  <div class="embroiderer_name"> username 1
 			  </div>
 			  <div class="kickout_vote"> &times;
@@ -391,121 +453,232 @@
   </div>
 
   <div class="chatboxbean">
-    <div class="chatbox">
-	  
+  <div class="chatbox">	  
     <div class="typingbox">
-		<textarea class="mess" type="text"></textarea>
-	  <div class="sendbutton">send</div>
-    </div>
+      <textarea class="mess" type="text"></textarea>
+      <div class="sendbutton">send</div>
+      </div>
     <div class="messagebox">
-		<div class="messageitem">
-			<div class="messageitem_icon">
-			</div>
-			  <div class="userchatboxmessagae">
-				<div class="messageinfo">info message here</div>
-				<div>
-					<div class="messgetext">4Content for  class "messgetext" Goes Here</div>
-				</div>  
-			</div>
-		</div>
-		
-		
-		<div class="messageitem">
-			<div class="messageitem_icon">
-		  </div>
-  		  <div class="guestchatboxmessagae">
-			<div class="messageinfo">info message here</div>
-		    <div>
-			  <div class="messgetext msgguest">3Content for  class "messgetext" Goes Here</div>
-			</div>
-			  
+      <div class="messageitem">
+        <div class="messageitem_icon">
           </div>
-		</div>
-		<div class="messageitem">
-			<div class="messageitem_icon">
-			</div>
-  		  <div class="userchatboxmessagae">
-			<div class="messageinfo">info message here</div>
-				<div>
-					<div class="messgetext msguser">2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here</div>
-				</div>
+        <div class="userchatboxmessagae">
+          <div class="messageinfo">info message here</div>
+          <div>
+            <div class="messgetext">4Content for  class "messgetext" Goes Here</div>
+            </div>  
           </div>
-		</div>
-		<div class="messageitem">
-			<div class="messageitem_icon">
-			</div>
-  		  <div class="guestchatboxmessagae">
-			<div class="messageinfo">info message here</div>
-				<div>
-		    		<div class="messgetext">1Content for  class "messgetext" Goes Here</div>
-				</div>
-          </div>
-		</div>
-		
-		
-	  <div class="messageitem">
-	  		<div class="somebodytyping_chatboxmessagae">1someone is typing...</div>
-	  </div>
-    </div>
-	<div class="member">
-		<div class="memberitem">
-		  	<div class="onlinestatus"> 
-			</div>
-		  	<div class="icon">
-			</div>
-		  	<div class="username"> username
-			</div>
-		  <div class="removemenber">
-			&times;</div>
         </div>
-		<div class="memberitem">
-		  	<div class="onlinestatus"> 
-			</div>
-		  	<div class="icon">
-			</div>
-		  	<div class="username"> username
-			</div>
-		  <div class="removemenber">
-			&times;</div>
-    	</div>
-		<div class="memberitem">
-		  	<div class="onlinestatus"> 
-			</div>
-		  	<div class="icon">
-			</div>
-		  	<div class="username"> username
-			</div>
-		  <div class="removemenber">
-			&times;</div>
-    	</div>
-		<div class="memberitem">
-		  	<div class="onlinestatus"> 
-			</div>
-		  	<div class="icon">
-			</div>
-		  	<div class="username"> username
-			</div>
-		  <div class="removemenber">
-			&times;</div>
-    	</div>
-		<div class="memberitem">
-		  	<div class="memberinvite"> invite friend
-			</div>
-    	</div>
-	</div>
-	<div class="titlechatbox">
-	  <div class="chatboxname">your group name</div>
-		  <div class="controlchatbox">
-			<div class="chatbox_minimize">-
-			  </div>
-			<div class="chatbox_maximize">
-			</div>
-			<div class="chatbox_close">x</div>
-		  </div>
-	  </div>
+      
+      
+      <div class="messageitem">
+        <div class="messageitem_icon">
+          </div>
+        <div class="guestchatboxmessagae">
+          <div class="messageinfo">info message here</div>
+          <div>
+            <div class="messgetext msgguest">3Content for  class "messgetext" Goes Here</div>
+            </div>
+          
+          </div>
+        </div>
+      <div class="messageitem">
+        <div class="messageitem_icon">
+          </div>
+        <div class="userchatboxmessagae">
+          <div class="messageinfo">info message here</div>
+          <div>
+            <div class="messgetext msguser">2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here</div>
+            </div>
+          </div>
+        </div>
+      <div class="messageitem">
+        <div class="messageitem_icon">
+          </div>
+        <div class="guestchatboxmessagae">
+          <div class="messageinfo">info message here</div>
+          <div>
+            <div class="messgetext">1Content for  class "messgetext" Goes Here</div>
+            </div>
+          </div>
+        </div>
+      
+      
+      <div class="messageitem">
+        <div class="somebodytyping_chatboxmessagae">1someone is typing...</div>
+        </div>
+      </div>
+    <div class="member">
+      <div class="memberitem">
+        <div class="onlinestatus"> 
+          </div>
+        <div class="icon">
+          </div>
+        <div class="username"> username
+          </div>
+        <div class="removemenber">
+          &times;</div>
+        </div>
+      <div class="memberitem">
+        <div class="onlinestatus"> 
+          </div>
+        <div class="icon">
+          </div>
+        <div class="username"> username
+          </div>
+        <div class="removemenber">
+          &times;</div>
+        </div>
+      <div class="memberitem">
+        <div class="onlinestatus"> 
+          </div>
+        <div class="icon">
+          </div>
+        <div class="username"> username
+          </div>
+        <div class="removemenber">
+          &times;</div>
+        </div>
+      <div class="memberitem">
+        <div class="onlinestatus"> 
+          </div>
+        <div class="icon">
+          </div>
+        <div class="username"> username
+          </div>
+        <div class="removemenber">
+          &times;</div>
+        </div>
+      <div class="memberitem">
+        <div class="memberinvite"> invite friend
+          </div>
+        </div>
+      </div>
+    <div class="titlechatbox">
+      <div class="chatboxname">your group name</div>
+      <div class="controlchatbox">
+        <div class="chatbox_minimize">-
+          </div>
+        <div class="chatbox_maximize">
+          </div>
+        <div class="chatbox_close">&times;</div>
+        </div>
+      </div>
   </div>
-
-	</div>
+  <div class="chatbox">
+    
+    <div class="typingbox">
+      <textarea class="mess" type="text"></textarea>
+      <div class="sendbutton">send</div>
+      </div>
+    <div class="messagebox">
+      <div class="messageitem">
+        <div class="messageitem_icon">
+          </div>
+        <div class="userchatboxmessagae">
+          <div class="messageinfo">info message here</div>
+          <div>
+            <div class="messgetext">4Content for  class "messgetext" Goes Here</div>
+            </div>  
+          </div>
+        </div>
+      
+      
+      <div class="messageitem">
+        <div class="messageitem_icon">
+          </div>
+        <div class="guestchatboxmessagae">
+          <div class="messageinfo">info message here</div>
+          <div>
+            <div class="messgetext msgguest">3Content for  class "messgetext" Goes Here</div>
+            </div>
+          
+          </div>
+        </div>
+      <div class="messageitem">
+        <div class="messageitem_icon">
+          </div>
+        <div class="userchatboxmessagae">
+          <div class="messageinfo">info message here</div>
+          <div>
+            <div class="messgetext msguser">2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here2Content for  class "messgetext" Goes Here</div>
+            </div>
+          </div>
+        </div>
+      <div class="messageitem">
+        <div class="messageitem_icon">
+          </div>
+        <div class="guestchatboxmessagae">
+          <div class="messageinfo">info message here</div>
+          <div>
+            <div class="messgetext">1Content for  class "messgetext" Goes Here</div>
+            </div>
+          </div>
+        </div>
+      
+      
+      <div class="messageitem">
+        <div class="somebodytyping_chatboxmessagae">1someone is typing...</div>
+        </div>
+      </div>
+    <div class="member">
+      <div class="memberitem">
+        <div class="onlinestatus"> 
+          </div>
+        <div class="icon">
+          </div>
+        <div class="username"> username
+          </div>
+        <div class="removemenber">
+          &times;</div>
+        </div>
+      <div class="memberitem">
+        <div class="onlinestatus"> 
+          </div>
+        <div class="icon">
+          </div>
+        <div class="username"> username
+          </div>
+        <div class="removemenber">
+          &times;</div>
+        </div>
+      <div class="memberitem">
+        <div class="onlinestatus"> 
+          </div>
+        <div class="icon">
+          </div>
+        <div class="username"> username
+          </div>
+        <div class="removemenber">
+          &times;</div>
+        </div>
+      <div class="memberitem">
+        <div class="onlinestatus"> 
+          </div>
+        <div class="icon">
+          </div>
+        <div class="username"> username
+          </div>
+        <div class="removemenber">
+          &times;</div>
+        </div>
+      <div class="memberitem">
+        <div class="memberinvite"> invite friend
+          </div>
+        </div>
+      </div>
+    <div class="titlechatbox">
+      <div class="chatboxname">your group name</div>
+      <div class="controlchatbox">
+        <div class="chatbox_minimize">
+          </div>
+        <div class="chatbox_maximize">
+          </div>
+        <div class="chatbox_close">&times;</div>
+        </div>
+      </div>
+  </div>
+  </div>
 
 </div>
 	<p/>
