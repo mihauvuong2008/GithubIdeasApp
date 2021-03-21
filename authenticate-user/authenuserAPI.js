@@ -150,7 +150,9 @@ let initAPIs = (app) => {
   // List Protect APIs:
   router.get("/groupchats", chatController.groupchatLists);
   router.get("/groupchats_messagedata", chatController.groupConversation);
+  router.get("/friendchats_messagedata", chatController.friendConversation);
   router.get("/groupchats_info", chatController.groupInfomation);
+  router.get("/friendchats_info", chatController.friendInfomation);
   router.post("/postmessagetogroup", chatController.postmessagetogroup);
   router.get("/groupchats_unreadmessage", chatController.groupchats_Unreadmessagedata);
   router.post("/postitemReadedmessageGroup", chatController.postitemReadedmessageGroup);

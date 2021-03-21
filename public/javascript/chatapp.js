@@ -1,4 +1,30 @@
 
+function getFriendConversation (friendID, token){
+  return new Promise(function(resolve, reject) {
+    var query = "/friendchats_messagedata?friendID="+friendID;
+    var xmlHttp = new XMLHttpRequest();
+    // myRequest.headers.get('Content-Type')
+    xmlHttp.open( "GET", query, false ); // false for synchronous request
+    xmlHttp.setRequestHeader("x-access-token", token);
+    xmlHttp.send( "" );
+    resolve(xmlHttp.responseText);
+  });
+}
+
+
+function  getFriendInfomation(friendID, token){
+  return new Promise(function(resolve, reject) {
+    var query = "/friendchats_info?friendID="+friendID;
+    var xmlHttp = new XMLHttpRequest();
+    // myRequest.headers.get('Content-Type')
+    xmlHttp.open( "GET", query, false ); // false for synchronous request
+    xmlHttp.setRequestHeader("x-access-token", token);
+    xmlHttp.send( "" );
+    resolve(xmlHttp.responseText);
+  });;
+}
+
+
 async function getfriendstillonline(userid, token){
   return new Promise(function(resolve, reject) {
     var query = "/friendstillonline?userid="+userid;
@@ -231,7 +257,7 @@ function getGroupConversation(groupID, token){
     xmlHttp.setRequestHeader("x-access-token", token);
     xmlHttp.send( "" );
     resolve(xmlHttp.responseText);
-  });;
+  });
 }
 
 function getGroupInfomation(groupID, token){

@@ -122,15 +122,13 @@ CREATE TABLE IF NOT EXISTS unknow_story (
 );
 
 CREATE TABLE IF NOT EXISTS say_to_friend (
-	tellerid INT NOT NULL,
-	unhide_usermindid INT NOT NULL,
 	receiverid INT NOT NULL,
+	unhide_usermindid INT NOT NULL,
 	datetime_tell DATETIME,
 	datetime_read DATETIME,
-	FOREIGN KEY (tellerid) REFERENCES chatappuser(userid),
 	FOREIGN KEY (unhide_usermindid) REFERENCES unhide_usermind(unhide_usermindid),
 	FOREIGN KEY (receiverid) REFERENCES chatappuser(userid),
-	PRIMARY KEY (tellerid, unhide_usermindid)
+	PRIMARY KEY (receiverid, unhide_usermindid)
 );
 
 CREATE TABLE IF NOT EXISTS say_to_group (
@@ -298,7 +296,6 @@ INSERT INTO  unhide_usermind (userid, message_data, datetime_unhide) value ('1',
 INSERT INTO  unhide_usermind (userid, message_data, datetime_unhide) value ('1', 'bla bla bla', '2021-03-02 08:08:49');
 
 
-
 INSERT INTO  chat_group (group_name, creator, datetime_create) value ( 'group name1', '1', '2021-03-02 08:08:49');
 INSERT INTO  chat_group (group_name, creator, datetime_create) value ( 'group name2', '2', '2021-03-02 08:08:49');
 INSERT INTO  chat_group (group_name, creator, datetime_create) value ( 'group name3', '3', '2021-03-02 08:08:49');
@@ -339,8 +336,6 @@ INSERT INTO  chat_group (group_name, creator, datetime_create) value ( 'group na
 INSERT INTO  chat_group (group_name, creator, datetime_create) value ( 'group name38', '1', '2021-03-02 08:08:49');
 INSERT INTO  chat_group (group_name, creator, datetime_create) value ( 'group name39', '1', '2021-03-02 08:08:49');
 INSERT INTO  chat_group (group_name, creator, datetime_create) value ( 'group name40', '1', '2021-03-02 08:08:49');
-
-
 
 
 INSERT INTO  member_of_chat_group (groupid, userid, datetime_join) value ( '1', '1', '2021-03-02 08:08:49');
@@ -487,16 +482,16 @@ INSERT INTO  unknow_story (userid, part_of_realid, datetime_read) value (  '4', 
 INSERT INTO  unknow_story (userid, part_of_realid, datetime_read) value (  '5', '3', '2021-03-02 08:08:49');
 
 
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '1', '2', '2021-03-02 08:08:49', NULL);
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '2', '3', '2021-03-02 08:08:49', NULL);
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '3', '4', '2021-03-02 08:08:49', NULL);
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '4', '5', '2021-03-02 08:08:49', NULL);
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '5', '6', '2021-03-02 08:08:49', NULL);
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '6', '7', '2021-03-02 08:08:49', NULL);
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '7', '8', '2021-03-02 08:08:49', NULL);
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '8', '9', '2021-03-02 08:08:49', NULL);
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '9', '10', '2021-03-02 08:08:49', NULL);
-INSERT INTO  say_to_friend (tellerid, unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '10', '2', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '1', '2', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '2', '3', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '3', '4', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '4', '5', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '5', '6', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '6', '7', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '7', '8', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '8', '9', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '9', '10', '2021-03-02 08:08:49', NULL);
+INSERT INTO  say_to_friend (unhide_usermindid, receiverid, datetime_tell, datetime_read) value (  '1', '10', '2', '2021-03-02 08:08:49', NULL);
 
 
 INSERT INTO  say_to_group (tellerid, unhide_usermindid, groupid, datetime_tell) value (  '1', '1', '1', '2021-03-02 08:08:49');	

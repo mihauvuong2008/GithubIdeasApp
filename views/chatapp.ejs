@@ -1043,10 +1043,9 @@ async function drawrecentchatbox(recentdata){
         var nameid = "recentchatboxnameID"+id;
         var label = document.getElementById(nameid);
         addChatbox(type,id, label.innerHTML );
-        loadGroupchatbox(type, id);
+        loadGroupchatbox(id);
         var nameid = "recentchatboxnameID"+id;
-
-        loadGroupConversation(type, id);
+        loadGroupConversation(id);
         // console.log("addChatbox(type, id)", type,thisid.substring(24));
         return ;
       }
@@ -1058,8 +1057,8 @@ async function drawrecentchatbox(recentdata){
         var id = thisid.substring(21);
         const recentchatboxlabel = document.getElementById("recentchatboxlabelID"+type+id);
         recentchatboxlabel.className = "recentchatboxlabel"
-        const closeicon = document.getElementById("closeiconID"+type+id);
-        closeicon.classList.remove("hidecloseicon");
+        // const closeicon = document.getElementById("closeiconID"+type+id);
+        // closeicon.classList.remove("hidecloseicon");
         // console.log("addChatbox(type, id)", type, thisid.substring(25));
         return ;
       }
@@ -1068,8 +1067,8 @@ async function drawrecentchatbox(recentdata){
         var id = thisid.substring(20);
         const recentchatboxlabel = document.getElementById("recentchatboxlabelID"+type+id);
         recentchatboxlabel.className = "recentchatboxlabel";
-        const closeicon = document.getElementById("closeiconID"+type+id);
-        closeicon.classList.remove("hidecloseicon");
+        // const closeicon = document.getElementById("closeiconID"+type+id);
+        // closeicon.classList.remove("hidecloseicon");
         // console.log("addChatbox(type, id)", type,thisid.substring(24));
         return ;
       }
@@ -1081,8 +1080,8 @@ async function drawrecentchatbox(recentdata){
         var id = thisid.substring(21);
         const recentchatboxlabel = document.getElementById("recentchatboxlabelID"+type+id);
         recentchatboxlabel.className = "hiderecentchatboxlabel"
-        const closeicon = document.getElementById("closeiconID"+type+id);
-        closeicon.classList.add("hidecloseicon");
+        // const closeicon = document.getElementById("closeiconID"+type+id);
+        // closeicon.classList.add("hidecloseicon");
         // console.log("addChatbox(type, id)", type, thisid.substring(25));
         return ;
       }
@@ -1091,8 +1090,8 @@ async function drawrecentchatbox(recentdata){
         var id = thisid.substring(20);
         const recentchatboxlabel = document.getElementById("recentchatboxlabelID"+type+id);
         recentchatboxlabel.className = "hiderecentchatboxlabel";
-        const closeicon = document.getElementById("closeiconID"+type+id);
-        closeicon.classList.add("hidecloseicon");
+        // const closeicon = document.getElementById("closeiconID"+type+id);
+        // closeicon.classList.add("hidecloseicon");
         // console.log("addChatbox(type, id)", type,thisid.substring(24));
         return ;
       }
@@ -1199,7 +1198,7 @@ async function drawrecentchatbox(recentdata){
     recentchatboxlabel.appendChild(pointer);
     recentchatboxlabel.appendChild(recentchatboxname);
     recentchatbox.appendChild(recentchatboxlabel);
-    recentchatbox.appendChild(closebean);
+    // recentchatbox.appendChild(closebean);
     body.appendChild(recentchatbox);
   }
 }
@@ -1210,9 +1209,9 @@ function initFriendList(friendchat_list){
   const friendlist =document. getElementById("friendlistID");
   friendlist.addEventListener('wheel', (e)=>{
     if (event.deltaY<0) {
-    friendlist.scrollTop -= 12;
+      friendlist.scrollTop -= 12;
     }else if (event.deltaY>0) {
-    friendlist.scrollTop += 12;
+      friendlist.scrollTop += 12;
     }
   });
   friendlist.innerHTML = "";
@@ -1242,7 +1241,8 @@ function initFriendList(friendchat_list){
       var friendID = this.id.substring(12);
       const friendname = document.getElementById("friendnameID"+friendID).innerHTML;
       addChatbox(chatroomtype.typefriend, friendID, friendname);
-      loadFriendConversation(chatroomtype.typefriend, friendID);
+      loadFriendchatbox(friendID);
+      loadFriendConversation(friendID);
     });
     const onlinestatus= document.createElement("div");
     onlinestatus.classList.add("onlinestatus");
@@ -1277,9 +1277,9 @@ function initGroupchatList(groupchat_list, token){
   var yourgroup = document.getElementById("yourgroupID");
   yourgroup.addEventListener('wheel', (e)=>{
     if (event.deltaY<0) {
-    yourgroup.scrollTop -= 12;
+      yourgroup.scrollTop -= 12;
     }else if (event.deltaY>0) {
-    yourgroup.scrollTop += 12;
+      yourgroup.scrollTop += 12;
     }
   });
   yourgroup.innerHTML="";
@@ -1321,8 +1321,8 @@ function initGroupchatList(groupchat_list, token){
       // loadMember(id);
       const groupname = document.getElementById("groupnameID"+groupID).innerHTML;
       addChatbox(chatroomtype.typegroup,groupID, groupname);
-      loadGroupchatbox(chatroomtype.typegroup,groupID);
-      loadGroupConversation(chatroomtype.typegroup,groupID);
+      loadGroupchatbox(groupID);
+      loadGroupConversation(groupID);
     });
     const onlinestatus = document.createElement("div");
     onlinestatus.classList.add("onlinestatus");
@@ -1372,8 +1372,8 @@ function isstillonline(date){
   return true;
 }
 
-async function loadGroupchatbox(type, groupID){
-  if(type.localeCompare(chatroomtype.typegroup)!=0)return ;
+async function loadGroupchatbox(groupID){
+  var type = chatroomtype.typegroup;
   var token = await getChatToken();
   var group = JSON.parse(await getGroupInfomation(groupID, token));
   if(group){
@@ -1384,7 +1384,7 @@ async function loadGroupchatbox(type, groupID){
     group.forEach((item, i) => {
       const memberitem = document.createElement("div");
       memberitem.classList.add("memberitem");
-      memberitem.id = "memberitemID" +type+groupID+ item.userid;
+      memberitem.id = "memberitemID" +type+groupID+"-"+ item.userid;
       const onlinestatus = document.createElement("div");
       onlinestatus.classList.add("onlinestatus");
       const icon = document.createElement("div");
@@ -1418,10 +1418,11 @@ async function loadGroupchatbox(type, groupID){
   }
 }
 
-async function loadGroupConversation(type, groupID){
+async function loadGroupConversation(groupID){
   // user view conversation, serverupdater will hot run to update:
   chatService_.updaterrate.serverupdater.delay=chatService_.updaterrate.serverupdater.limittocooldown;
   // get data
+  var type = chatroomtype.typegroup;
   var token = await getChatToken();
   var groupConversation = JSON.parse(await getGroupConversation(groupID, token));
   var messagebox = document.getElementById("messageboxID"+type+groupID);
@@ -1503,21 +1504,48 @@ async function loadGroupConversation(type, groupID){
 }
 
 
-
-
-async function loadFriendConversation(type, friendID){
+async function loadFriendchatbox(friendID){
+  var type = chatroomtype.typefriend;
   var token = await getChatToken();
-  // var converstation = JSON.parse(await getGroupConversation(groupID, token));
-  // var messageItem="";
-  // if(converstation)
-  // converstation.forEach((item, i) => {
-  // messageItem+="<div class='messageitem'>"
-  // +"<div class='messageitem_icon'>"
-  // +"</div>"
-  // +"<div class='"+( userdata.id == item.sender?"userchatboxmessagae":"guestchatboxmessagae")+"'>"+item.message_data+"</div>"
-  // +"</div>"
-  // });
-  // document.getElementById("messageboxID").innerHTML = messageItem;
+  var friendinfo = JSON.parse(await getFriendInfomation(friendID, token));
+  // console.log(friendinfo);
+  if(friendinfo.length>0) {
+    var friend = friendinfo[0];
+    document.getElementById("chatboxnameID"+type+friendID).innerHTML=friend.username;
+  }
+  const memberList = document.getElementById("memberID"+type+friendID);
+  memberList.innerHTML="";
+  const memberitem = document.createElement("div");
+  memberitem.classList.add("memberitem");
+  memberitem.id = "memberitemID" +type+friendID+"-"+ friend.userid;
+  const onlinestatus = document.createElement("div");
+  onlinestatus.classList.add("onlinestatus");
+  const icon = document.createElement("div");
+  icon.classList.add("icon");
+  const username = document.createElement("div");
+  username.classList.add("username");
+  username.innerHTML = friend.username;
+  memberitem.appendChild(onlinestatus);
+  memberitem.appendChild(icon);
+  memberitem.appendChild(username);
+  memberList.appendChild(memberitem);
+
+}
+
+
+async function loadFriendConversation( friendID){
+  var token = await getChatToken();
+  var converstation = JSON.parse(await getFriendConversation(friendID, token));
+  var messageItem="";
+  if(converstation)
+  converstation.forEach((item, i) => {
+    messageItem+="<div class='messageitem'>"
+    +"<div class='messageitem_icon'>"
+    +"</div>"
+    +"<div class='"+( userdata.id == item.sender?"userchatboxmessagae":"guestchatboxmessagae")+"'>"+item.message_data+"</div>"
+    +"</div>"
+  });
+  document.getElementById("messageboxID").innerHTML = messageItem;
 }
 
 // send data

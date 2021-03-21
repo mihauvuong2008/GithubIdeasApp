@@ -157,6 +157,40 @@ let groupConversation = async (req, res) => {
 }
 
 
+let friendConversation = async (req, res) => {
+  // Lấy token được gửi lên từ phía client, thông thường tốt nhất là các bạn nên truyền token vào header
+
+  // console.log(req.headers["x-access-token"]);
+  var querydata = {friendID: req.query.friendID };
+  const tokenFromClient = req.body.token || req.query.token || req.headers["x-access-token"];
+  if (tokenFromClient) {
+    // Nếu tồn tại token
+    try {
+      // Thực hiện giải mã token xem có hợp lệ hay không?
+      const decoded = await jwtTool.verifyToken(tokenFromClient, auth_config.accessTokenSecret);
+      const userFakeData = decoded.data;
+
+      var userid = decoded.data._id;
+      var result = await mysqlDBTool.getFriendConversation(userid, querydata.friendID);
+      // console.log(result);
+      return res.status(200).json(result);
+    } catch (error) {
+      //removeDeadToken
+      //removeDeadToken(tokenFromClient);
+      console.log(error);
+      // Nếu giải mã gặp lỗi: Không đúng, hết hạn...etc:
+      return res.status(401).json({
+        message: 'Unauthorized.',
+      });
+    }
+  } else {
+    // Không tìm thấy token trong request
+    return res.status(403).send({
+      message: 'router.use: No token provided.',
+    });
+  }
+}
+
 let groupchats_Unreadmessagedata = async (req, res) => {
   // Lấy token được gửi lên từ phía client, thông thường tốt nhất là các bạn nên truyền token vào header
 
@@ -241,7 +275,6 @@ let postitemReadedmessageGroup = async (req, res) => {
   }
 }
 
-
 let groupInfomation = async (req, res) => {
   // Lấy token được gửi lên từ phía client, thông thường tốt nhất là các bạn nên truyền token vào header
 
@@ -274,6 +307,40 @@ let groupInfomation = async (req, res) => {
     });
   }
 }
+
+let friendInfomation = async (req, res) => {
+  // Lấy token được gửi lên từ phía client, thông thường tốt nhất là các bạn nên truyền token vào header
+
+  // console.log(req.headers["x-access-token"]);
+  var querydata = {friendID: req.query.friendID };
+  const tokenFromClient = req.body.token || req.query.token || req.headers["x-access-token"];
+  if (tokenFromClient) {
+    // Nếu tồn tại token
+    try {
+      // Thực hiện giải mã token xem có hợp lệ hay không?
+      const decoded = await jwtTool.verifyToken(tokenFromClient, auth_config.accessTokenSecret);
+      const userFakeData = decoded.data;
+
+      var userid = decoded.data._id;
+      var result = await mysqlDBTool.getFriendInfomation(userid, querydata.friendID);
+      return res.status(200).json(result);
+    } catch (error) {
+      //removeDeadToken
+      //removeDeadToken(tokenFromClient);
+      console.log(error);
+      // Nếu giải mã gặp lỗi: Không đúng, hết hạn...etc:
+      return res.status(401).json({
+        message: 'Unauthorized.',
+      });
+    }
+  } else {
+    // Không tìm thấy token trong request
+    return res.status(403).send({
+      message: 'router.use: No token provided.',
+    });
+  }
+}
+
 
 let groupnotify = async (req, res) => {
   // Lấy token được gửi lên từ phía client, thông thường tốt nhất là các bạn nên truyền token vào header
@@ -436,9 +503,11 @@ module.exports = {
   getuserSession_availble: getuserSession_availble,
   groupchatLists: groupchatLists,
   groupConversation: groupConversation,
+  friendConversation: friendConversation,
   groupchats_Unreadmessagedata: groupchats_Unreadmessagedata,
   postmessagetogroup: postmessagetogroup,
   groupInfomation: groupInfomation,
+  friendInfomation: friendInfomation,
   postitemReadedmessageGroup: postitemReadedmessageGroup,
   groupnotify: groupnotify,
   istillonline: istillonline,

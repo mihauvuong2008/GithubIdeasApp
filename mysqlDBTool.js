@@ -194,6 +194,27 @@ module.exports = {
     });
   },
 
+  getFriendConversation: async function(userid, groupid){
+    return new Promise( function (resolve, reject) {
+
+      var sql = "select a.unhide_usermindid, a.userid, a.message_data, a.datetime_unhide, a.username, a.login, u.datetime_read, u.readerid  FROM (select c.unhide_usermindid, c.userid, c.message_data, c.datetime_unhide, ca.username, ca.login "
+      + " FROM unhide_usermind c, chatappuser ca, say_to_friend s "
+      + " WHERE (c.userid = ca.userid AND c.userid = s.tellerid AND s.unhide_usermindid = c.unhide_usermindid  AND s.groupid = cg.groupid AND m.groupid = cg.groupid AND cg.groupid ='"
+      + groupid +"' AND m.userid = '"+userid+"')"
+      + " ORDER BY c.datetime_unhide  DESC, c.unhide_usermindid DESC) a "
+      + " LEFT JOIN unread_group u ON  u.readerid='"+userid+"' AND (u.unhide_usermindid = a.unhide_usermindid OR u.unhide_usermindid is NULL) ORDER BY a.unhide_usermindid DESC LIMIT 50;"
+      // var sql = "select c.unhide_usermindid, c.userid, c.message_data, c.datetime_unhide, ca.username, ca.login "
+      // +" FROM unhide_usermind c, member_of_chat_group m, chatappuser ca, chat_group cg, say_to_group s "
+      // + " WHERE (c.userid = ca.userid AND c.userid = s.tellerid AND s.unhide_usermindid = c.unhide_usermindid "
+      // + " AND s.groupid = cg.groupid AND m.groupid = cg.groupid AND cg.groupid ='"
+      // + groupid +"' AND m.userid = '"+userid+"') ORDER BY c.datetime_unhide  DESC, c.unhide_usermindid DESC LIMIT 30";
+      // console.log(sql);
+      con.query(sql, function (err, result, fields) {
+        if (err) {throw err;reject()};
+        resolve(result);
+      });
+    });
+  },
   getgroupchats_UnreadMessagedata: async function(userid, groupid){
     return new Promise( function (resolve, reject) {
       //
@@ -238,6 +259,18 @@ module.exports = {
     });
   },
 
+getFriendInfomation: async function(userid, friendid){
+  return new Promise( function (resolve, reject) {
+
+    var sql = "select caf.userid, caf.username, caf.lastdatetimelogin FROM chatappuser ca, chatappuser caf, friend_relate f "
+    + " WHERE ca.userid = f.userid AND  f.friend = caf.userid AND ca.userid ='"+ userid +"' AND caf.userid = '"+friendid+"'";
+    con.query(sql, function (err, result, fields) {
+      if (err) {throw err;reject()};
+      // console.log("getGroupInfomation: ", sql, result);
+      resolve(result);
+    });
+  });
+},
   unhide_yourmind: async function(userid, message_data, datetime_unhide ){
     return new Promise( function (resolve, reject) {
 

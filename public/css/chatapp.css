@@ -297,8 +297,18 @@ html, body {
 	/*	flex-direction: column-reverse;*/
 	padding: 3px;
 	box-sizing: border-box;
-	border: 1px solid #E7E7E7;
-	margin: 2px;
+	border-left-color: #E7E7E7;
+	border-bottom-color: #E7E7E7;
+	border-top-color: #E7E7E7;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-top-style: solid;
+	border-left-width: 1px;
+	border-bottom-width: 1px;
+	border-top-width: 1px;
+	margin-top: 2px;
+	margin-left: 2px;
+	margin-bottom: 2px;
 	overflow: hidden
 }
 .chatpanel .friendlist .frienditem {
@@ -366,7 +376,6 @@ html, body {
 	margin-top: 2px;
 	margin-right: 2px;
 	margin-bottom: 2px;
-	margin-left: 2px;
 	padding-top: 3px;
 	padding-right: 3px;
 	padding-bottom: 3px;
@@ -698,7 +707,7 @@ align-items: flex-end;
 }
 
 .chatboxbean .sendbutton {
-	height: 30px;
+	height: 28px;
 	box-sizing: border-box;
 	background-color: #00BE37;/*
 	border-top: 10px solid transparent;
